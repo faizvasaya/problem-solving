@@ -64,6 +64,16 @@
               <mainClass>com.leetcode.containerwithmostwater.ContainerWithMostWaterExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Remove Duplicates From Sorted Array -->
+          <execution>
+            <id>run-removeduplicatesfromsortedarray</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.removeduplicatesfromsortedarray.RemoveDuplicatesFromSortedArrayExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
