@@ -54,6 +54,16 @@
               <mainClass>com.leetcode.palindromenumber.PalindromeNumberExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Container With Most Water -->
+          <execution>
+            <id>run-containerwithmostwater</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.containerwithmostwater.ContainerWithMostWaterExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
