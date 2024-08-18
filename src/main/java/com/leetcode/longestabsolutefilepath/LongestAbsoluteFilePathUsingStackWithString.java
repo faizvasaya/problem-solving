@@ -29,8 +29,7 @@ public class LongestAbsoluteFilePathUsingStackWithString implements LongestAbsol
             if (path.contains(".")) {
                 String completePath = "";
                 if (pathStack.size() > 0) {
-                    completePath = String.join("/", pathStack) + "/" + cleansedPath;    
-                    System.out.println(completePath);
+                    completePath = String.join("/", pathStack) + "/" + cleansedPath;
                 } else {
                     completePath = cleansedPath;
                 }
