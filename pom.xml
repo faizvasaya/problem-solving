@@ -71,7 +71,19 @@
               <goal>java</goal>
             </goals>
             <configuration>
-              <mainClass>com.leetcode.removeduplicatesfromsortedarray.RemoveDuplicatesFromSortedArrayExecutor</mainClass>
+              <mainClass>
+                com.leetcode.removeduplicatesfromsortedarray.RemoveDuplicatesFromSortedArrayExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Longest Absolute File Path -->
+          <execution>
+            <id>run-longestabsolutefilepath</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.longestabsolutefilepath.LongestAbsoluteFilePathExecutor</mainClass>
             </configuration>
           </execution>
         </executions>
