@@ -2,7 +2,7 @@ package com.leetcode.longestabsolutefilepath;
 
 public class LongestAbsoluteFilePathExecutor {
     public static void main(String[] args) {
-        LongestAbsoluteFilePath longestAbsoluteFilePath = new LongestAbsoluteFilePathWithMap();
+        LongestAbsoluteFilePath longestAbsoluteFilePath = new LongestAbsoluteFilePathUsingArray();
 
         String systemFilePath = "dir\n\tsubdir\n\t\tfile.ext";
 
