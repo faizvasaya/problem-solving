@@ -86,6 +86,17 @@
                 com.leetcode.longestabsolutefilepath.LongestAbsoluteFilePathExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Singly Linked List -->
+          <execution>
+            <id>run-linkedlist</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.linkedlist.LinkedListExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>

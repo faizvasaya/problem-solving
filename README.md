@@ -11,3 +11,4 @@
 - mvn exec:java@run-palindromenumber - To run the code for Palindrome number
 - mvn exec:java@run-removeduplicatesfromsortedarray - To run remove duplicates from sorted array
 - mvn exec:java@run-longestabsolutefilepath - To run long absolute file path
+- mvn exec:java@run-linkedlist - To run Linked List 
