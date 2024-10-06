@@ -2,18 +2,18 @@ package com.leetcode.linkedlist;
 
 public class LinkedListExecutor {
 
-    public static void main (String args[]) {
-        ILinkedList singlyLinkedList = new SinglyLinkedList();
-        singlyLinkedList.append(1);
-        singlyLinkedList.append(2);
-        singlyLinkedList.append(3);
+    public static void main(String args[]) {
+        DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+        doublyLinkedList.append(10);
+        doublyLinkedList.append(20);
+        doublyLinkedList.append(30);
 
-        singlyLinkedList.prepend(0);
-        singlyLinkedList.prepend(8);
+        doublyLinkedList.delete(5);
 
-        singlyLinkedList.delete(0);
-        singlyLinkedList.delete(2);
+        doublyLinkedList.print();
+        System.out.println();
+        doublyLinkedList.printBackward();
 
-        singlyLinkedList.print();
-    }    
+
+    }
 }
