@@ -97,6 +97,17 @@
                 com.leetcode.linkedlist.LinkedListExecutor</mainClass>
             </configuration>
           </execution>
+           <!-- Execution for Singly Linked List -->
+           <execution>
+            <id>run-search</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.search.SearchExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
