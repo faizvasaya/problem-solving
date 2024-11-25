@@ -13,3 +13,4 @@
 - mvn exec:java@run-longestabsolutefilepath - To run long absolute file path
 - mvn exec:java@run-linkedlist - To run Linked List 
 - mvn exec:java@run-search - To run Search Algorithms
+- mvn exec:java@run-binarysearch - To run Search Algorithms
