@@ -12,5 +12,25 @@ public class BinarySearchExecutor {
         System.out.println("101 was found: " + bs.searchInAscendingOrderedArray(sortedArray, 101));
         System.out.println("500 was found: " + bs.searchInAscendingOrderedArray(sortedArray, 500));
         System.out.println("600 was found: " + bs.searchInAscendingOrderedArray(sortedArray, 600));
+
+        CellingOfANumber cellingOfANumber = new CellingOfANumber();
+        int[] sortedArray2 = new int[]{2, 3, 5, 9, 14, 16, 18};
+        int target = 18;
+        int result14 = cellingOfANumber.findCellingInAscendingOrderedArray(sortedArray2, target);
+        System.out.println("The celling of: " + target + " is: " + result14);
+
+        int target2 = 6;
+        int result1 = cellingOfANumber.findFloorInAscendingOrderedArray(sortedArray2, target2);
+        System.out.println("The floor of: " + target + " is: " + result1);
+
+        SmallestLetterGreaterThanTarget smallestLetterGreaterThanTarget = new SmallestLetterGreaterThanTarget();
+
+        char[] sortedArray3 = new char[]{'a','b'};
+
+        char target3 = 'a';
+
+        int result15 = smallestLetterGreaterThanTarget.findUsingBooleanArray(sortedArray3, target3);
+
+        System.out.println("The smallest letter greater than : " + target3 + " is: " + result15);
     }
 }
