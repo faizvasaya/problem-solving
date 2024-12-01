@@ -1,5 +1,7 @@
 package com.leetcode.binarysearch;
 
+import java.util.Arrays;
+
 public class BinarySearchExecutor {
 
     public static void main(String[] args) {
@@ -25,12 +27,29 @@ public class BinarySearchExecutor {
 
         SmallestLetterGreaterThanTarget smallestLetterGreaterThanTarget = new SmallestLetterGreaterThanTarget();
 
-        char[] sortedArray3 = new char[]{'a','b'};
+        char[] sortedArray3 = new char[]{'a', 'b'};
 
         char target3 = 'a';
 
         int result15 = smallestLetterGreaterThanTarget.findUsingBooleanArray(sortedArray3, target3);
 
         System.out.println("The smallest letter greater than : " + target3 + " is: " + result15);
+
+        FirstAndLastPositionOfElementInSortedArray firstAndLastPositionOfElementInSortedArray = new FirstAndLastPositionOfElementInSortedArray();
+        int[] sortedArray4 = new int[]{2, 2, 2, 3, 3, 3, 9, 14, 16, 18, 18, 18};
+        int target4 = 18;
+        int[] result16 = firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(sortedArray4, target4);
+        System.out.println("The FirstAndLastPositionOfElementInSortedArray of: " + target4 + " is: " + Arrays.toString(result16));
+
+        int[] result17 = firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(sortedArray4, target4);
+        System.out.println("The FirstAndLastPositionOfElementInSortedArray of: " + target4 + " is: " + Arrays.toString(result17));
+
+        FindTargetInAnInfiniteArray findTargetInAnInfiniteArray = new FindTargetInAnInfiniteArray();
+
+        int[] sortedArray5 = new int[]{10, 18, 25, 31, 33, 60, 68, 70};
+        int target5 = 100;
+
+        int result18 = findTargetInAnInfiniteArray.findUsingBinarySearch(sortedArray5, target5);
+        System.out.println("The element : " + target5 + " exists at: " + result18 + " position");
     }
 }

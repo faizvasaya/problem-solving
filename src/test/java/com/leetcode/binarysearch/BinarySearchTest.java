@@ -1,5 +1,8 @@
 package com.leetcode.binarysearch;
 
+import java.util.Arrays;
+
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -906,4 +909,322 @@ public class BinarySearchTest {
         char expected = 'a';
         assertEquals(expected, smallestLetterGreaterThanTarget.findUsingBooleanArray(letters, target));
     }
+
+    FirstAndLastPositionOfElementInSortedArray firstAndLastPositionOfElementInSortedArray = new FirstAndLastPositionOfElementInSortedArray();
+
+    // Test Case 1: Target with multiple occurrences
+    @Test
+    public void testTargetWithMultipleOccurrences() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 8;
+        int[] expected = {3, 4}; // target 8 occurs at indices 3 and 4
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 2: Target with a single occurrence
+    @Test
+    public void testTargetWithSingleOccurrence() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 10;
+        int[] expected = {-1, -1}; // target 10 occurs at index 5
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 3: Target not found in the array
+    @Test
+    public void testTargetNotFound() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 6;
+        int[] expected = {-1, -1}; // target 6 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 4: Empty array
+    @Test
+    public void testEmptyArray2() {
+        int[] nums = {};
+        int target = 0;
+        int[] expected = {-1, -1}; // No elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 5: Single element array with target present
+    @Test
+    public void testSingleElementArrayTargetPresent() {
+        int[] nums = {5};
+        int target = 5;
+        int[] expected = {-1, -1}; // target 5 occurs at index 0
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 6: Single element array with target not present
+    @Test
+    public void testSingleElementArrayTargetNotPresent() {
+        int[] nums = {5};
+        int target = 6;
+        int[] expected = {-1, -1}; // target 6 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 7: Target is smaller than all elements in the array
+    @Test
+    public void testTargetSmallerThanAllElements() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 4;
+        int[] expected = {-1, -1}; // target 4 is smaller than all elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 8: Target is greater than all elements in the array
+    @Test
+    public void testTargetGreaterThanAllElements() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 12;
+        int[] expected = {-1, -1}; // target 12 is greater than all elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 9: All elements are the same as the target
+    @Test
+    public void testAllElementsSameAsTarget() {
+        int[] nums = {5, 5, 5, 5, 5};
+        int target = 5;
+        int[] expected = {0, 4}; // All elements are 5, so first and last indices are 0 and 4
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 10: Large array with target at the start
+    @Test
+    public void testLargeArrayWithTargetAtStart() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 1); // All elements are 1
+        int target = 1;
+        int[] expected = {0, 99999}; // target 1 occurs from index 0 to 99999
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 11: Large array with no target found
+    @Test
+    public void testLargeArrayWithTargetNotFound() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 1); // All elements are 1
+        int target = 2;
+        int[] expected = {-1, -1}; // target 2 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 12: Large array with multiple occurrences of target
+    @Test
+    public void testLargeArrayWithMultipleOccurrences() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 2); // All elements are 2
+        int target = 2;
+        int[] expected = {0, 99999}; // target 2 occurs at all positions from 0 to 99999
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBruteForce(nums, target));
+    }
+
+    // Test Case 1: Target with multiple occurrences
+    @Test
+    public void testTargetWithMultipleOccurrencesBS() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 8;
+        int[] expected = {3, 4}; // target 8 occurs at indices 3 and 4
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 2: Target with a single occurrence
+    @Test
+    public void testTargetWithSingleOccurrenceBS() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 10;
+        int[] expected = {-1, -1}; // target 10 occurs at index 5
+        int[] result = firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target);
+        assertArrayEquals(expected, result);
+    }
+
+    // Test Case 3: Target not found in the array
+    @Test
+    public void testTargetNotFoundBS() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 6;
+        int[] expected = {-1, -1}; // target 6 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 4: Empty array
+    @Test
+    public void testEmptyArray2BS() {
+        int[] nums = {};
+        int target = 0;
+        int[] expected = {-1, -1}; // No elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 5: Single element array with target present
+    @Test
+    public void testSingleElementArrayTargetPresentBS() {
+        int[] nums = {5};
+        int target = 5;
+        int[] expected = {-1, -1}; // target 5 occurs at index 0
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 6: Single element array with target not present
+    @Test
+    public void testSingleElementArrayTargetNotPresentBS() {
+        int[] nums = {5};
+        int target = 6;
+        int[] expected = {-1, -1}; // target 6 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 7: Target is smaller than all elements in the array
+    @Test
+    public void testTargetSmallerThanAllElementsBS() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 4;
+        int[] expected = {-1, -1}; // target 4 is smaller than all elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 8: Target is greater than all elements in the array
+    @Test
+    public void testTargetGreaterThanAllElementsBS() {
+        int[] nums = {5, 7, 7, 8, 8, 10};
+        int target = 12;
+        int[] expected = {-1, -1}; // target 12 is greater than all elements in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 9: All elements are the same as the target
+    @Test
+    public void testAllElementsSameAsTargetBS() {
+        int[] nums = {5, 5, 5, 5, 5};
+        int target = 5;
+        int[] expected = {0, 4}; // All elements are 5, so first and last indices are 0 and 4
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 10: Large array with target at the start
+    @Test
+    public void testLargeArrayWithTargetAtStartBS() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 1); // All elements are 1
+        int target = 1;
+        int[] expected = {0, 99999}; // target 1 occurs from index 0 to 99999
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 11: Large array with no target found
+    @Test
+    public void testLargeArrayWithTargetNotFoundBS() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 1); // All elements are 1
+        int target = 2;
+        int[] expected = {-1, -1}; // target 2 is not in the array
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    // Test Case 12: Large array with multiple occurrences of target
+    @Test
+    public void testLargeArrayWithMultipleOccurrencesBS() {
+        int[] nums = new int[100000];
+        Arrays.fill(nums, 0, 100000, 2); // All elements are 2
+        int target = 2;
+        int[] expected = {0, 99999}; // target 2 occurs at all positions from 0 to 99999
+        assertArrayEquals(expected, firstAndLastPositionOfElementInSortedArray.findUsingBinarySearch(nums, target));
+    }
+
+    private final FindTargetInAnInfiniteArray finder = new FindTargetInAnInfiniteArray();
+
+    // Test 1: Basic test where the target exists in the array
+    @Test
+    public void testFindTargetExists() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
+        int target = 70;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(7, result);
+    }
+
+    // Test 2: Target at the first index
+    @Test
+    public void testTargetAtStartInfiniteArray() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
+        int target = 10;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(0, result);
+    }
+
+    // Test 3: Target at the last index
+    @Test
+    public void testTargetAtEnd() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
+        int target = 70;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(7, result);
+    }
+
+    // Test 4: Target does not exist in the array
+    @Test
+    public void testTargetDoesNotExist() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
+        int target = 100;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(-1, result);
+    }
+
+    // Test 5: Target in the middle of the array
+    @Test
+    public void testTargetInMiddleInfiniteArray() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
+        int target = 33;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(4, result);
+    }
+
+    // Test 6: Empty array - Edge case
+    @Test
+    public void testEmptyArrayInfiniteArray() {
+        int[] array = {};
+        int target = 10;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(-1, result);
+    }
+
+    // Test 7: Target is very large and located beyond initial exponential range
+    @Test
+    public void testLargeTargetInfiniteArray() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 1000};
+        int target = 1000;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(7, result);
+    }
+
+    // Test 8: Searching for a small target in a large array (large range test)
+    @Test
+    public void testSmallTargetLargeArray() {
+        int[] array = {10, 18, 25, 31, 33, 60, 68, 70, 150, 200, 300, 500, 700, 800, 1000, 1200};
+        int target = 18;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(1, result);
+    }
+
+    // Test 9: Test when target is not found, edge case of exponential range expansion
+    @Test
+    public void testTargetOutOfBounds() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int target = 10;
+        
+        int result = finder.findUsingBinarySearch(array, target);
+        assertEquals(-1, result);
+    }
+
 }
