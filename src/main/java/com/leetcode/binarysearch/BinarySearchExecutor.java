@@ -51,5 +51,27 @@ public class BinarySearchExecutor {
 
         int result18 = findTargetInAnInfiniteArray.findUsingBinarySearch(sortedArray5, target5);
         System.out.println("The element : " + target5 + " exists at: " + result18 + " position");
+
+        FindPeakOfAMountainArray findPeakOfAMountainArray = new FindPeakOfAMountainArray();
+
+        int[] mountainArray = new int[]{55, 65, 75, 20, 22, 5};
+
+        int result19 = findPeakOfAMountainArray.findUsingBinarySearch(mountainArray);
+        System.out.println("The peak index is : " + result19);
+
+        FindPeakElement findPeakElement = new FindPeakElement();
+
+        int[] nums = new int[]{1400, 1200, 1100, 1200, 800};
+
+        int result20 = findPeakElement.findUsingBinarySearch(nums);
+        System.out.println("The peak index is : " + result20);
+
+        FindMinimumIndexInMountainArray findMinimumIndexInMountainArray = new FindMinimumIndexInMountainArray();
+
+        int[] nums1 = new int[]{1, 2, 4, 5, 3, 2, 1};
+        int target6 = 3;
+
+        int result21 = findMinimumIndexInMountainArray.findUsingBinarySearch(nums1, target6);
+        System.out.println("The minimum index for target: " + target6 + " is: " + result21);
     }
 }

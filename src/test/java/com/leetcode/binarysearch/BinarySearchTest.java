@@ -1142,7 +1142,7 @@ public class BinarySearchTest {
     public void testFindTargetExists() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
         int target = 70;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(7, result);
     }
@@ -1152,7 +1152,7 @@ public class BinarySearchTest {
     public void testTargetAtStartInfiniteArray() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
         int target = 10;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(0, result);
     }
@@ -1162,7 +1162,7 @@ public class BinarySearchTest {
     public void testTargetAtEnd() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
         int target = 70;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(7, result);
     }
@@ -1172,7 +1172,7 @@ public class BinarySearchTest {
     public void testTargetDoesNotExist() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
         int target = 100;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(-1, result);
     }
@@ -1182,7 +1182,7 @@ public class BinarySearchTest {
     public void testTargetInMiddleInfiniteArray() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70};
         int target = 33;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(4, result);
     }
@@ -1192,7 +1192,7 @@ public class BinarySearchTest {
     public void testEmptyArrayInfiniteArray() {
         int[] array = {};
         int target = 10;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(-1, result);
     }
@@ -1202,7 +1202,7 @@ public class BinarySearchTest {
     public void testLargeTargetInfiniteArray() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 1000};
         int target = 1000;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(7, result);
     }
@@ -1212,7 +1212,7 @@ public class BinarySearchTest {
     public void testSmallTargetLargeArray() {
         int[] array = {10, 18, 25, 31, 33, 60, 68, 70, 150, 200, 300, 500, 700, 800, 1000, 1200};
         int target = 18;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(1, result);
     }
@@ -1222,9 +1222,415 @@ public class BinarySearchTest {
     public void testTargetOutOfBounds() {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         int target = 10;
-        
+
         int result = finder.findUsingBinarySearch(array, target);
         assertEquals(-1, result);
+    }
+
+    private final FindPeakOfAMountainArray findPeakOfAMountainArray = new FindPeakOfAMountainArray();
+
+    // Test 1: Basic test with a small mountain array
+    @Test
+    public void testBasicMountain() {
+        int[] arr = {0, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 2: Test with a larger peak
+    @Test
+    public void testLargerPeak() {
+        int[] arr = {0, 2, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 3: Test with a larger number of elements
+    @Test
+    public void testLargerArray() {
+        int[] arr = {0, 10, 5, 2};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 4: Case where the peak is at the beginning of the array
+    @Test
+    public void testPeakAtStartMS() {
+        int[] arr = {1, 2, 1};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 5: Case where the peak is at the end of the array
+    @Test
+    public void testPeakAtEndMS() {
+        int[] arr = {1, 2, 3, 2, 1};
+        assertEquals(2, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 6: Case where the peak is at the middle of the array
+    @Test
+    public void testPeakAtMiddle() {
+        int[] arr = {1, 3, 2};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 7: Case with a large number of elements
+    @Test
+    public void testLargeArrayPeak() {
+        int[] arr = new int[100000];
+        for (int i = 0; i < arr.length / 2; i++) {
+            arr[i] = i;
+        }
+        for (int i = arr.length / 2; i < arr.length; i++) {
+            arr[i] = arr.length - i - 1;
+        }
+
+        // The peak should be at the middle of the array
+        assertEquals((arr.length / 2) - 1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 8: Edge case where the array has only 3 elements
+    @Test
+    public void testMinimumSizeArray() {
+        int[] arr = {0, 2, 1};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 9: Array with all elements being the same except the peak
+    @Test
+    public void testIdenticalElements() {
+        int[] arr = {0, 1000, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 10: Edge case where the peak is at the second position
+    @Test
+    public void testPeakAtSecond() {
+        int[] arr = {1, 2, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 11: Array where the peak is larger than all other elements
+    @Test
+    public void testVeryLargePeak() {
+        int[] arr = {1, 1000000, 999999, 999998};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBruteForce(arr));
+    }
+
+    // Test 1: Basic test with a small mountain array
+    @Test
+    public void testBasicMountainBS() {
+        int[] arr = {0, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 2: Test with a larger peak
+    @Test
+    public void testLargerPeakBS() {
+        int[] arr = {0, 2, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 3: Test with a larger number of elements
+    @Test
+    public void testLargerArrayBS() {
+        int[] arr = {0, 10, 5, 2};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 4: Case where the peak is at the beginning of the array
+    @Test
+    public void testPeakAtStartBS() {
+        int[] arr = {1, 2, 1};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 5: Case where the peak is at the end of the array
+    @Test
+    public void testPeakAtEndBS() {
+        int[] arr = {1, 2, 3, 2, 1};
+        assertEquals(2, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 6: Case where the peak is at the middle of the array
+    @Test
+    public void testPeakAtMiddleBS() {
+        int[] arr = {1, 3, 2};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 7: Case with a large number of elements
+    @Test
+    public void testLargeArrayPeakBS() {
+        int[] arr = new int[100000];
+        for (int i = 0; i < arr.length / 2; i++) {
+            arr[i] = i;
+        }
+        for (int i = arr.length / 2; i < arr.length; i++) {
+            arr[i] = arr.length - i - 1;
+        }
+
+        // The peak should be at the middle of the array
+        assertEquals((arr.length / 2), findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 8: Edge case where the array has only 3 elements
+    @Test
+    public void testMinimumSizeArrayBS() {
+        int[] arr = {0, 2, 1};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 9: Array with all elements being the same except the peak
+    @Test
+    public void testIdenticalElementsBS() {
+        int[] arr = {0, 1000, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 10: Edge case where the peak is at the second position
+    @Test
+    public void testPeakAtSecondBS() {
+        int[] arr = {1, 2, 1, 0};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    // Test 11: Array where the peak is larger than all other elements
+    @Test
+    public void testVeryLargePeakBS() {
+        int[] arr = {1, 1000000, 999999, 999998};
+        assertEquals(1, findPeakOfAMountainArray.findUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testSingleElementArray() {
+        // Edge case: array contains only one element
+        int[] nums = {10};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(0, result); // The only element is the peak
+    }
+
+    @Test
+    public void testTwoElementArrayPeakAtFirst() {
+        // Edge case: array contains two elements, peak at the first index
+        int[] nums = {20, 10};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(0, result); // Peak is at index 0
+    }
+
+    @Test
+    public void testTwoElementArrayPeakAtSecond() {
+        // Edge case: array contains two elements, peak at the second index
+        int[] nums = {10, 20};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(1, result); // Peak is at index 1
+    }
+
+    @Test
+    public void testMultiplePeaksReturnAny() {
+        // Normal case: array contains multiple peaks
+        int[] nums = {1, 3, 2, 5, 4};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        // Peak can be at index 1 (3) or index 3 (5)
+        boolean isValid = (result == 1 || result == 3);
+        assertEquals(true, isValid);
+    }
+
+    @Test
+    public void testPeakAtStart() {
+        // Normal case: peak is at the start of the array
+        int[] nums = {10, 2, 1};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(0, result); // Peak is at index 0
+    }
+
+    @Test
+    public void testPeakAtEnd() {
+        // Normal case: peak is at the end of the array
+        int[] nums = {1, 2, 3, 10};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(3, result); // Peak is at index 3
+    }
+
+    @Test
+    public void testPeakInMiddle() {
+        // Normal case: peak is in the middle of the array
+        int[] nums = {1, 2, 3, 1};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(2, result); // Peak is at index 2
+    }
+
+    @Test
+    public void testLongArray() {
+        // Normal case: longer array with multiple peaks
+        int[] nums = {1, 3, 2, 4, 6, 5, 7, 8, 6, 4};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        // Possible peaks: index 1 (3), 4 (6), 7 (8)
+        boolean isValid = (result == 1 || result == 4 || result == 7);
+        assertEquals(true, isValid);
+    }
+
+    @Test
+    public void testNegativeAndPositiveNumbers() {
+        // Normal case: array contains both negative and positive numbers
+        int[] nums = {-10, -5, -1, 0, -2, -3};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(3, result); // Peak is at index 3 (0)
+    }
+
+    @Test
+    public void testAllDescending() {
+        // Edge case: array is strictly descending
+        int[] nums = {10, 9, 8, 7, 6};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(0, result); // Peak is at index 0
+    }
+
+    @Test
+    public void testAllAscending() {
+        // Edge case: array is strictly ascending
+        int[] nums = {1, 2, 3, 4, 5};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(4, result); // Peak is at index 4
+    }
+
+    @Test
+    public void testArrayWithLargeValues() {
+        // Edge case: array contains very large values
+        int[] nums = {Integer.MIN_VALUE, 0, Integer.MAX_VALUE};
+        FindPeakElement solution = new FindPeakElement();
+        int result = solution.findUsingBinarySearch(nums);
+        assertEquals(2, result); // Peak is at index 2 (Integer.MAX_VALUE)
+    }
+
+    @Test
+    public void testTargetAtPeak() {
+        // Case: Target is the peak of the mountain
+        int[] mountainArr = {1, 3, 5, 4, 2};
+        int target = 5;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(2, result); // Target found at index 2
+    }
+
+    @Test
+    public void testTargetInAscendingPart() {
+        // Case: Target is in the ascending part of the mountain
+        int[] mountainArr = {1, 2, 3, 4, 5, 3, 1};
+        int target = 3;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(2, result); // Target found at the ascending part (index 2)
+    }
+
+    @Test
+    public void testTargetInDescendingPart() {
+        // Case: Target is in the descending part of the mountain
+        int[] mountainArr = {1, 2, 3, 4, 5, 3, 1};
+        int target = 3;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(2, result); // Return minimum index (ascending part, index 2)
+    }
+
+    @Test
+    public void testTargetNotFoundPE() {
+        // Case: Target does not exist in the array
+        int[] mountainArr = {0, 1, 2, 4, 2, 1};
+        int target = 3;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    @Test
+    public void testSinglePeakMountain() {
+        // Case: Mountain array with one element in ascending, one in descending
+        int[] mountainArr = {1, 3, 1};
+        int target = 3;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(1, result); // Peak and target found at index 1
+    }
+
+    @Test
+    public void testTargetAtEdgeAscending() {
+        // Case: Target is at the beginning of the ascending part
+        int[] mountainArr = {1, 2, 3, 4, 5, 3, 1};
+        int target = 1;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(0, result); // Target found at index 0
+    }
+
+    @Test
+    public void testTargetAtEdgeDescending() {
+        // Case: Target is at the end of the descending part
+        int[] mountainArr = {1, 2, 3, 4, 5, 3, 1};
+        int target = 1;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(0, result); // Return the minimum index (index 0)
+    }
+
+    @Test
+    public void testLargeMountainArray() {
+        // Case: Large mountain array, target is in the middle
+        int[] mountainArr = new int[10001];
+        for (int i = 0; i <= 5000; i++) {
+            mountainArr[i] = i;
+        }
+        for (int i = 5001; i < 10001; i++) {
+            mountainArr[i] = 10000 - i;
+        }
+        int target = 4000;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(4000, result); // Target found at index 4000
+    }
+
+    @Test
+    public void testTargetAtPeakInLargeMountain() {
+        // Case: Large mountain array, target is the peak
+        int[] mountainArr = new int[10001];
+        for (int i = 0; i <= 5000; i++) {
+            mountainArr[i] = i;
+        }
+        for (int i = 5001; i < 10001; i++) {
+            mountainArr[i] = 10000 - i;
+        }
+        int target = 5000;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(5000, result); // Target is the peak at index 5000
+    }
+
+    @Test
+    public void testTargetAtEdgeOfDescending() {
+        // Case: Target is at the last index of the descending part
+        int[] mountainArr = {1, 2, 3, 5, 4, 2};
+        int target = 2;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(1, result); // Target found at index 5
+    }
+
+    @Test
+    public void testNoTargetWithRepeatedValues() {
+        // Case: Mountain array with distinct values and target not present
+        int[] mountainArr = {1, 3, 5, 4, 2};
+        int target = 6;
+        FindMinimumIndexInMountainArray solution = new FindMinimumIndexInMountainArray();
+        int result = solution.findUsingBinarySearch(mountainArr, target);
+        assertEquals(-1, result); // Target not found
     }
 
 }
