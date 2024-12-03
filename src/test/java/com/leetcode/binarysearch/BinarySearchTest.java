@@ -1633,4 +1633,208 @@ public class BinarySearchTest {
         assertEquals(-1, result); // Target not found
     }
 
+    @Test
+    public void testTargetFoundInLeftHalf() {
+        // Case: Target is in the left (rotated) half of the array
+        int[] nums = {4, 5, 6, 7, 0, 1, 2};
+        int target = 6;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(2, result); // Target found at index 2
+    }
+
+    @Test
+    public void testTargetFoundInRightHalf() {
+        // Case: Target is in the right half of the array
+        int[] nums = {4, 5, 6, 7, 0, 1, 2};
+        int target = 1;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(5, result); // Target found at index 5
+    }
+
+    @Test
+    public void testTargetAtPivot() {
+        // Case: Target is at the pivot point
+        int[] nums = {6, 7, 0, 1, 2, 3, 4, 5};
+        int target = 0;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(2, result); // Target found at pivot index 2
+    }
+
+    @Test
+    public void testTargetNotFoundSS() {
+        // Case: Target is not in the array
+        int[] nums = {4, 5, 6, 7, 0, 1, 2};
+        int target = 3;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    @Test
+    public void testSingleElementFound() {
+        // Case: Array contains only one element, and target is found
+        int[] nums = {5};
+        int target = 5;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(0, result); // Target found at index 0
+    }
+
+    @Test
+    public void testSingleElementNotFound() {
+        // Case: Array contains only one element, and target is not found
+        int[] nums = {5};
+        int target = 3;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    @Test
+    public void testArrayNotRotatedTargetFound() {
+        // Case: Array is not rotated, and target is found
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int target = 4;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(3, result); // Target found at index 3
+    }
+
+    @Test
+    public void testArrayNotRotatedTargetNotFound() {
+        // Case: Array is not rotated, and target is not found
+        int[] nums = {1, 2, 3, 4, 5, 6, 7};
+        int target = 8;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    @Test
+    public void testLargeArrayTargetFound() {
+        // Case: Large rotated array, target is found
+        int[] nums = new int[5000];
+        for (int i = 1000; i < 5000; i++) {
+            nums[i - 1000] = i; // 1000 to 4999
+        }
+        for (int i = 0; i < 1000; i++) {
+            nums[4000 + i] = i; // 0 to 999
+        }
+        int target = 2500;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(1500, result); // Target found at index 1500
+    }
+
+    @Test
+    public void testLargeArrayTargetNotFound() {
+        // Case: Large rotated array, target is not found
+        int[] nums = new int[5000];
+        for (int i = 1000; i < 5000; i++) {
+            nums[i - 1000] = i; // 1000 to 4999
+        }
+        for (int i = 0; i < 1000; i++) {
+            nums[4000 + i] = i; // 0 to 999
+        }
+        int target = 5000;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    @Test
+    public void testNegativeValues() {
+        // Case: Array contains negative and positive values, target found
+        int[] nums = {-9, -4, -1, 0, 3, 8, 12};
+        int target = -4;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(1, result); // Target found at index 1
+    }
+
+    @Test
+    public void testNegativeValuesNotFound() {
+        // Case: Array contains negative and positive values, target not found
+        int[] nums = {-9, -4, -1, 0, 3, 8, 12};
+        int target = 7;
+        SearchInRotatedSortedArray solution = new SearchInRotatedSortedArray();
+        int result = solution.findUsingBinarySearch(nums, target);
+        assertEquals(-1, result); // Target not found
+    }
+
+    private final NumberOfRotationsOnASortedArray numberOfRotationsOnASortedArray = new NumberOfRotationsOnASortedArray();
+
+    @Test
+    public void testNoRotation() {
+        // Case: No rotation
+        int[] arr = {7, 9, 11, 12, 15};
+        assertEquals(0, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testSingleRotation() {
+        // Case: Rotated once
+        int[] arr = {15, 7, 9, 11, 12};
+        assertEquals(1, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testMultipleRotations() {
+        // Case: Rotated multiple times
+        int[] arr = {15, 18, 2, 3, 6, 12};
+        assertEquals(2, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testAlmostFullRotation() {
+        // Case: Rotated to nearly full length of the array
+        int[] arr = {7, 9, 11, 12, 5};
+        assertEquals(4, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testFullRotation() {
+        // Case: Fully rotated (k = length of array)
+        int[] arr = {1, 2, 3, 4, 5};
+        assertEquals(0, numberOfRotationsOnASortedArray.findRotationCount(arr)); // Same as no rotation
+    }
+
+    @Test
+    public void testSmallArraySize() {
+        // Case: Array of size 2, rotated once
+        int[] arr = {2, 1};
+        assertEquals(1, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testMinimumArraySize() {
+        // Case: Array of size 1, no rotation
+        int[] arr = {5};
+        assertEquals(0, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testLargeArrayRC() {
+        // Case: Large array
+        int[] arr = {10001, 10002, 1, 2, 3, 4, 5};
+        assertEquals(2, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testNegativeValuesRC() {
+        // Case: Array with negative values
+        int[] arr = {-9, -7, -4, 1, 2, 3, -15};
+        assertEquals(6, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
+    @Test
+    public void testMixedPositiveNegative() {
+        // Case: Array with a mix of positive and negative values
+        int[] arr = {5, 10, -15, -10, -5, 0};
+        assertEquals(2, numberOfRotationsOnASortedArray.findRotationCount(arr));
+    }
+
 }

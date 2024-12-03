@@ -73,5 +73,20 @@ public class BinarySearchExecutor {
 
         int result21 = findMinimumIndexInMountainArray.findUsingBinarySearch(nums1, target6);
         System.out.println("The minimum index for target: " + target6 + " is: " + result21);
+
+        SearchInRotatedSortedArray searchInRotatedSortedArray = new SearchInRotatedSortedArray();
+
+        int[] nums2 = new int[]{2, 9, 2, 2, 2};
+        int target7 = 2;
+
+        int result22 = searchInRotatedSortedArray.findUsingBinarySearch(nums2, target7);
+        System.out.println("The target: " + target7 + " is on: " + result22 + " index in rotated array");
+
+        NumberOfRotationsOnASortedArray numberOfRotationsOnASortedArray = new NumberOfRotationsOnASortedArray();
+
+        int[] nums3 = new int[]{7, 9, 11, 12, 15};
+
+        int result23 = numberOfRotationsOnASortedArray.findRotationCount(nums3);
+        System.out.println("The total number of rotated elements are: " + result23 + " in rotated array");
     }
 }
