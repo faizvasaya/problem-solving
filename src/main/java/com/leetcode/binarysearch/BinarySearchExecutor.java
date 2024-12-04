@@ -88,5 +88,24 @@ public class BinarySearchExecutor {
 
         int result23 = numberOfRotationsOnASortedArray.findRotationCount(nums3);
         System.out.println("The total number of rotated elements are: " + result23 + " in rotated array");
+
+        SearchingInA2DMatrix searchingInA2DMatrix = new SearchingInA2DMatrix();
+
+        int[][] nums4 = new int[][]{{18, 9, 12}, {36, -4, -91}, {44, 33, 16}};
+        int target8 = 100;
+
+        int[] result24 = searchingInA2DMatrix.searchUsingBruteForce(nums4, target8);
+        System.out.println("The element: " + target8 + " is found at: " + Arrays.toString(result24));
+
+        int[][] nums5 = new int[][]{
+            {10, 20, 30},
+            {15, 25, 35},
+            {28, 29, 37},
+            {33, 34, 38}
+        };
+        int target9 = 25;
+
+        int[] result25 = searchingInA2DMatrix.searchUsingReducingSearchSpace(nums5, target9);
+        System.out.println("The element: " + target9 + " is found at: " + Arrays.toString(result25));
     }
 }

@@ -1837,4 +1837,133 @@ public class BinarySearchTest {
         assertEquals(2, numberOfRotationsOnASortedArray.findRotationCount(arr));
     }
 
+    @Test
+    public void testTargetFoundInMiddle() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {28, 29, 37, 49},
+            {33, 34, 38, 50}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 29);
+        assertArrayEquals(new int[]{2, 1}, result); // Target found at (2, 1)
+    }
+
+    @Test
+    public void testTargetFoundInTopLeft() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {28, 29, 37, 49},
+            {33, 34, 38, 50}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 10);
+        assertArrayEquals(new int[]{0, 0}, result); // Target found at top-left (0, 0)
+    }
+
+    @Test
+    public void testTargetFoundInBottomRight() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {28, 29, 37, 49},
+            {33, 34, 38, 50}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 50);
+        assertArrayEquals(new int[]{3, 3}, result); // Target found at bottom-right (3, 3)
+    }
+
+    @Test
+    public void testTargetNotFound2D() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {28, 29, 37, 49},
+            {33, 34, 38, 50}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 100);
+        assertArrayEquals(new int[]{-1, -1}, result); // Target not found
+    }
+
+    @Test
+    public void testTargetSmallerThanAllElements2D() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {10, 20, 30, 40},
+            {15, 25, 35, 45},
+            {28, 29, 37, 49},
+            {33, 34, 38, 50}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 5);
+        assertArrayEquals(new int[]{-1, -1}, result); // Target not found
+    }
+
+    @Test
+    public void testSingleElementMatrixTargetFound() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {42}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        assertArrayEquals(new int[]{0, 0}, result); // Target found at (0, 0)
+    }
+
+    @Test
+    public void testSingleElementMatrixTargetNotFound() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {42}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 99);
+        assertArrayEquals(new int[]{-1, -1}, result); // Target not found
+    }
+
+    @Test
+    public void testEmptyMatrix() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {};
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        assertArrayEquals(new int[]{-1, -1}, result); // Edge case: Empty matrix
+    }
+
+    @Test
+    public void testMatrixWithEmptyRows() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {},
+            {},
+            {}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        assertArrayEquals(new int[]{-1, -1}, result); // Edge case: Empty rows in the matrix
+    }
+
+    @Test
+    public void testTargetInLastColumn() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {1, 4, 7, 11},
+            {2, 5, 8, 12},
+            {3, 6, 9, 13}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 13);
+        assertArrayEquals(new int[]{2, 3}, result); // Target found in last column
+    }
+
+    @Test
+    public void testTargetInFirstColumn() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] nums = {
+            {1, 4, 7, 11},
+            {2, 5, 8, 12},
+            {3, 6, 9, 13}
+        };
+        int[] result = searcher.searchUsingReducingSearchSpace(nums, 3);
+        assertArrayEquals(new int[]{2, 0}, result); // Target found in first column
+    }
+
 }
