@@ -105,7 +105,21 @@ public class BinarySearchExecutor {
         };
         int target9 = 25;
 
-        int[] result25 = searchingInA2DMatrix.searchUsingReducingSearchSpace(nums5, target9);
+        int[] result25 = searchingInA2DMatrix.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums5, target9);
         System.out.println("The element: " + target9 + " is found at: " + Arrays.toString(result25));
+
+        int[][] nums6 = new int[][]{
+            {25, 30, 35, 40},
+            {51, 55, 60, 62},
+            {81, 85, 90, 101}
+        };
+
+        int target10 = 110;
+
+        boolean result26 = searchingInA2DMatrix.searchUsingReducingSearchSpaceInRowSortedMatrix(nums6, target10);
+        System.out.println("The element: " + target10 + " is found at: " + result26);
+
+        boolean result27 = searchingInA2DMatrix.searchInRowSortedMatrixUsingMathematicalMapping(nums6, target10);
+        System.out.println("The element: " + target10 + " is found at: " + result27);
     }
 }

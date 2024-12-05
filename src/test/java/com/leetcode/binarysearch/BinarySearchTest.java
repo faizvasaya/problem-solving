@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class BinarySearchTest {
@@ -1846,7 +1848,7 @@ public class BinarySearchTest {
             {28, 29, 37, 49},
             {33, 34, 38, 50}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 29);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 29);
         assertArrayEquals(new int[]{2, 1}, result); // Target found at (2, 1)
     }
 
@@ -1859,7 +1861,7 @@ public class BinarySearchTest {
             {28, 29, 37, 49},
             {33, 34, 38, 50}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 10);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 10);
         assertArrayEquals(new int[]{0, 0}, result); // Target found at top-left (0, 0)
     }
 
@@ -1872,7 +1874,7 @@ public class BinarySearchTest {
             {28, 29, 37, 49},
             {33, 34, 38, 50}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 50);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 50);
         assertArrayEquals(new int[]{3, 3}, result); // Target found at bottom-right (3, 3)
     }
 
@@ -1885,7 +1887,7 @@ public class BinarySearchTest {
             {28, 29, 37, 49},
             {33, 34, 38, 50}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 100);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 100);
         assertArrayEquals(new int[]{-1, -1}, result); // Target not found
     }
 
@@ -1898,7 +1900,7 @@ public class BinarySearchTest {
             {28, 29, 37, 49},
             {33, 34, 38, 50}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 5);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 5);
         assertArrayEquals(new int[]{-1, -1}, result); // Target not found
     }
 
@@ -1908,7 +1910,7 @@ public class BinarySearchTest {
         int[][] nums = {
             {42}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 42);
         assertArrayEquals(new int[]{0, 0}, result); // Target found at (0, 0)
     }
 
@@ -1918,7 +1920,7 @@ public class BinarySearchTest {
         int[][] nums = {
             {42}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 99);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 99);
         assertArrayEquals(new int[]{-1, -1}, result); // Target not found
     }
 
@@ -1926,7 +1928,7 @@ public class BinarySearchTest {
     public void testEmptyMatrix() {
         SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
         int[][] nums = {};
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 42);
         assertArrayEquals(new int[]{-1, -1}, result); // Edge case: Empty matrix
     }
 
@@ -1938,7 +1940,7 @@ public class BinarySearchTest {
             {},
             {}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 42);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 42);
         assertArrayEquals(new int[]{-1, -1}, result); // Edge case: Empty rows in the matrix
     }
 
@@ -1950,7 +1952,7 @@ public class BinarySearchTest {
             {2, 5, 8, 12},
             {3, 6, 9, 13}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 13);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 13);
         assertArrayEquals(new int[]{2, 3}, result); // Target found in last column
     }
 
@@ -1962,8 +1964,237 @@ public class BinarySearchTest {
             {2, 5, 8, 12},
             {3, 6, 9, 13}
         };
-        int[] result = searcher.searchUsingReducingSearchSpace(nums, 3);
+        int[] result = searcher.searchUsingReducingSearchSpaceInRowColumnSortedMatrix(nums, 3);
         assertArrayEquals(new int[]{2, 0}, result); // Target found in first column
     }
 
+    @Test
+    public void testTargetPresent() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 3);
+        assertTrue(result); // Target 3 is present in the matrix
+    }
+
+    @Test
+    public void testTargetAbsent() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 13);
+        assertFalse(result); // Target 13 is not present in the matrix
+    }
+
+    @Test
+    public void testSingleRow() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 2, 3, 4, 5}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 4);
+        assertTrue(result); // Target 4 is present in the matrix
+    }
+
+    @Test
+    public void testSingleColumn() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1}, {3}, {5}, {7}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 5);
+        assertTrue(result); // Target 5 is present in the matrix
+    }
+
+    @Test
+    public void testSingleElement() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{5}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 5);
+        assertTrue(result); // Target 5 is present in the matrix
+    }
+
+    @Test
+
+    public void testEmptyMatrix2D() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 5);
+        assertFalse(result); // Empty matrix, target cannot be present
+    }
+
+    @Test
+    public void testNegativeNumbers2D() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10, -5, -1, 0}, {1, 2, 3, 4}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, -5);
+        assertTrue(result); // Target -5 is present in the matrix
+    }
+
+    @Test
+    public void testTargetOutOfRange() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, -100);
+        assertFalse(result); // Target -100 is less than all elements in the matrix
+    }
+
+    @Test
+    public void testLargestMatrix() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = new int[100][100];
+        int target = 9999;
+
+        // Fill the matrix with sequential numbers
+        int value = -10000;
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                matrix[i][j] = value++;
+            }
+        }
+
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, target);
+        assertFalse(result); // Target 9999 is greater than all elements in the matrix
+    }
+
+    @Test
+    public void testMinimumValueInRange() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10000, -9999, -9998}, {-9995, -9994, -9993}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, -10000);
+        assertTrue(result); // Target -10000 is present in the matrix
+    }
+
+    @Test
+    public void testMaximumValueInRange() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{9997, 9998, 9999}, {10000, 10001, 10002}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 10000);
+        assertTrue(result); // Target 10000 is present in the matrix
+    }
+
+    @Test
+    public void testTargetTooSmall() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10000, -9999, -9998}, {-9995, -9994, -9993}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, -10001);
+        assertFalse(result); // Target -10001 is smaller than all elements in the matrix
+    }
+
+    @Test
+    public void testTargetTooLarge() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{9997, 9998, 9999}, {10000, 10001, 10002}};
+        boolean result = searcher.searchUsingReducingSearchSpaceInRowSortedMatrix(matrix, 10003);
+        assertFalse(result); // Target 10003 is larger than all elements in the matrix
+    }
+
+    @Test
+    public void testTargetPresentMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 3);
+        assertTrue(result); // Target 3 is present in the matrix
+    }
+
+    @Test
+    public void testTargetAbsentMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 13);
+        assertFalse(result); // Target 13 is not present in the matrix
+    }
+
+    @Test
+    public void testSingleRowMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 2, 3, 4, 5}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 4);
+        assertTrue(result); // Target 4 is present in the matrix
+    }
+
+    @Test
+    public void testSingleColumnMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1}, {3}, {5}, {7}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 5);
+        assertTrue(result); // Target 5 is present in the matrix
+    }
+
+    @Test
+    public void testSingleElementMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{5}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 5);
+        assertTrue(result); // Target 5 is present in the matrix
+    }
+
+    @Test
+
+    public void testEmptyMatrix2DMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 5);
+        assertFalse(result); // Empty matrix, target cannot be present
+    }
+
+    @Test
+    public void testNegativeNumbers2DMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10, -5, -1, 0}, {1, 2, 3, 4}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, -5);
+        assertTrue(result); // Target -5 is present in the matrix
+    }
+
+    @Test
+    public void testTargetOutOfRangeMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{1, 3, 5, 7}, {10, 11, 16, 20}, {23, 30, 34, 60}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, -100);
+        assertFalse(result); // Target -100 is less than all elements in the matrix
+    }
+
+    @Test
+    public void testLargestMatrixMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = new int[100][100];
+        int target = 9999;
+
+        // Fill the matrix with sequential numbers
+        int value = -10000;
+        for (int i = 0; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                matrix[i][j] = value++;
+            }
+        }
+
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, target);
+        assertFalse(result); // Target 9999 is greater than all elements in the matrix
+    }
+
+    @Test
+    public void testMinimumValueInRangeMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10000, -9999, -9998}, {-9995, -9994, -9993}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, -10000);
+        assertTrue(result); // Target -10000 is present in the matrix
+    }
+
+    @Test
+    public void testMaximumValueInRangeMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{9997, 9998, 9999}, {10000, 10001, 10002}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 10000);
+        assertTrue(result); // Target 10000 is present in the matrix
+    }
+
+    @Test
+    public void testTargetTooSmallMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{-10000, -9999, -9998}, {-9995, -9994, -9993}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, -10001);
+        assertFalse(result); // Target -10001 is smaller than all elements in the matrix
+    }
+
+    @Test
+    public void testTargetTooLargeMM() {
+        SearchingInA2DMatrix searcher = new SearchingInA2DMatrix();
+        int[][] matrix = {{9997, 9998, 9999}, {10000, 10001, 10002}};
+        boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 10003);
+        assertFalse(result); // Target 10003 is larger than all elements in the matrix
+    }
 }
