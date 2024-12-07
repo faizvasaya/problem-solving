@@ -2197,4 +2197,87 @@ public class BinarySearchTest {
         boolean result = searcher.searchInRowSortedMatrixUsingMathematicalMapping(matrix, 10003);
         assertFalse(result); // Target 10003 is larger than all elements in the matrix
     }
+
+    private final SquareRootOfANumber squareRootOfANumber = new SquareRootOfANumber();
+
+    @Test
+    public void testPerfectSquares() {
+        assertEquals(0, squareRootOfANumber.findUsingBinarySearch(0)); // x = 0
+        assertEquals(1, squareRootOfANumber.findUsingBinarySearch(1)); // x = 1
+        assertEquals(2, squareRootOfANumber.findUsingBinarySearch(4)); // x = 4
+        assertEquals(3, squareRootOfANumber.findUsingBinarySearch(9)); // x = 9
+        assertEquals(10, squareRootOfANumber.findUsingBinarySearch(100)); // x = 100
+    }
+
+    @Test
+    public void testNonPerfectSquares() {
+        assertEquals(2, squareRootOfANumber.findUsingBinarySearch(8)); // x = 8
+        assertEquals(4, squareRootOfANumber.findUsingBinarySearch(20)); // x = 20
+        assertEquals(15, squareRootOfANumber.findUsingBinarySearch(240)); // x = 240
+    }
+
+    @Test
+    public void testLargeNumbers() {
+        assertEquals(46340, squareRootOfANumber.findUsingBinarySearch(2147395600)); // Largest perfect square < 2^31 - 1
+        assertEquals(46340, squareRootOfANumber.findUsingBinarySearch(2147483647)); // Largest number in range
+    }
+
+    @Test
+    public void testSmallNumbers() {
+        assertEquals(0, squareRootOfANumber.findUsingBinarySearch(0)); // Lower bound
+        assertEquals(1, squareRootOfANumber.findUsingBinarySearch(2)); // Just above 1
+    }
+
+    @Test
+    public void testEdgeCases() {
+        assertEquals(46340, squareRootOfANumber.findUsingBinarySearch(2147483646)); // Edge case near upper limit
+        assertEquals(46340, squareRootOfANumber.findUsingBinarySearch(2147395601)); // Slightly above the largest perfect square
+    }
+
+    @Test
+    public void testBasicCases() {
+        GuessTheNumber game = new GuessTheNumber();
+
+        // Test small range
+        assertEquals(6, game.findUsingBinarySearch(10, 6)); // Picked number is in the middle
+        assertEquals(1, game.findUsingBinarySearch(10, 1)); // Picked number is at the start
+        assertEquals(10, game.findUsingBinarySearch(10, 10)); // Picked number is at the end
+    }
+
+    @Test
+    public void testEdgeCasesGame() {
+        GuessTheNumber game = new GuessTheNumber();
+
+        // Test edge of the range
+        assertEquals(1, game.findUsingBinarySearch(1, 1)); // Smallest possible range
+        assertEquals(2_147_483_647, game.findUsingBinarySearch(2_147_483_647, 2_147_483_647)); // Largest possible range
+    }
+
+    @Test
+    public void testLargeRange() {
+        GuessTheNumber game = new GuessTheNumber();
+
+        // Test large range with numbers picked in different positions
+        assertEquals(1, game.findUsingBinarySearch(2_147_483_647, 1)); // Picked number is the smallest
+        assertEquals(1_073_741_824, game.findUsingBinarySearch(2_147_483_647, 1_073_741_824)); // Picked number is in the middle
+        assertEquals(2_147_483_647, game.findUsingBinarySearch(2_147_483_647, 2_147_483_647)); // Picked number is the largest
+    }
+
+    @Test
+    public void testBinarySearchLogic() {
+        GuessTheNumber game = new GuessTheNumber();
+
+        // Test numbers that require multiple binary search steps
+        assertEquals(50, game.findUsingBinarySearch(100, 50)); // Picked number in the middle
+        assertEquals(75, game.findUsingBinarySearch(100, 75)); // Picked number in the upper half
+        assertEquals(25, game.findUsingBinarySearch(100, 25)); // Picked number in the lower half
+    }
+
+    @Test
+    public void testPerformance() {
+        GuessTheNumber game = new GuessTheNumber();
+
+        // Test performance on maximum range
+        assertEquals(2_147_483_646, game.findUsingBinarySearch(2_147_483_647, 2_147_483_646));
+    }
 }

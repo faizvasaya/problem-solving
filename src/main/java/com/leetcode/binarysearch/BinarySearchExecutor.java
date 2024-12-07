@@ -121,5 +121,17 @@ public class BinarySearchExecutor {
 
         boolean result27 = searchingInA2DMatrix.searchInRowSortedMatrixUsingMathematicalMapping(nums6, target10);
         System.out.println("The element: " + target10 + " is found at: " + result27);
+
+        SquareRootOfANumber squareRootOfANumber = new SquareRootOfANumber();
+        int value = 239369;
+        int result28 = squareRootOfANumber.findUsingBinarySearch(value);
+        System.out.println("The least square root of: " +  value + " is: " + result28);
+
+        GuessTheNumber gtn = new GuessTheNumber();
+        int n = 25;
+        int pick = 22;
+
+        System.out.println("The pick was: " + gtn.findUsingBruteForce(n, pick));
+        System.out.println("The pick was: " + gtn.findUsingBinarySearch(n, pick));
     }
 }
