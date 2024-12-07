@@ -125,7 +125,7 @@ public class BinarySearchExecutor {
         SquareRootOfANumber squareRootOfANumber = new SquareRootOfANumber();
         int value = 239369;
         int result28 = squareRootOfANumber.findUsingBinarySearch(value);
-        System.out.println("The least square root of: " +  value + " is: " + result28);
+        System.out.println("The least square root of: " + value + " is: " + result28);
 
         GuessTheNumber gtn = new GuessTheNumber();
         int n = 25;
@@ -133,5 +133,12 @@ public class BinarySearchExecutor {
 
         System.out.println("The pick was: " + gtn.findUsingBruteForce(n, pick));
         System.out.println("The pick was: " + gtn.findUsingBinarySearch(n, pick));
+
+        TwoSumInputArraySorted arraySorted = new TwoSumInputArraySorted();
+
+        int[] numbers = new int[]{2, 3, 4, 7, 10};
+        int target11 = 5;
+
+        System.out.println("The two numbers are: "+ Arrays.toString((arraySorted.findUsingBinarySearch(numbers, target11))));
     }
 }

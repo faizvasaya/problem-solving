@@ -2280,4 +2280,62 @@ public class BinarySearchTest {
         // Test performance on maximum range
         assertEquals(2_147_483_646, game.findUsingBinarySearch(2_147_483_647, 2_147_483_646));
     }
+
+    @Test
+    public void testBasicCasesTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test example cases
+        assertArrayEquals(new int[]{1, 2}, solver.findUsingBinarySearch(new int[]{2, 7, 11, 15}, 9));
+        assertArrayEquals(new int[]{1, 3}, solver.findUsingBinarySearch(new int[]{2, 3, 4}, 6));
+        assertArrayEquals(new int[]{1, 2}, solver.findUsingBinarySearch(new int[]{-1, 0}, -1));
+    }
+
+    @Test
+    public void testNegativeNumbersTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test with negative numbers
+        assertArrayEquals(new int[]{1, 4}, solver.findUsingBinarySearch(new int[]{-10, -3, 2, 7, 15}, -3));
+        assertArrayEquals(new int[]{3, 5}, solver.findUsingBinarySearch(new int[]{-7, -3, 0, 5, 8}, 8));
+    }
+
+    @Test
+    public void testLargeInputTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test with large array
+        int[] numbers = new int[30_000];
+        for (int i = 0; i < 30_000; i++) {
+            numbers[i] = i + 1; // Fill array with 1 to 30000
+        }
+        assertArrayEquals(new int[]{1, 30_000}, solver.findUsingBinarySearch(numbers, 30_001));
+        assertArrayEquals(new int[]{1, 30_000}, solver.findUsingBinarySearch(numbers, 30_001));
+    }
+
+    @Test
+    public void testSmallestInputTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test smallest valid input
+        assertArrayEquals(new int[]{1, 2}, solver.findUsingBinarySearch(new int[]{1, 2}, 3));
+    }
+
+    @Test
+    public void testRepeatedNumbersTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test with repeated numbers
+        assertArrayEquals(new int[]{1, 5}, solver.findUsingBinarySearch(new int[]{1, 1, 1, 2, 2}, 3));
+        assertArrayEquals(new int[]{4, 5}, solver.findUsingBinarySearch(new int[]{1, 1, 1, 2, 2}, 4));
+    }
+
+    @Test
+    public void testEdgeCasesTS() {
+        TwoSumInputArraySorted solver = new TwoSumInputArraySorted();
+
+        // Test with largest constraints
+        assertArrayEquals(new int[]{1, 2}, solver.findUsingBinarySearch(new int[]{-1000, 1000}, 0));
+        assertArrayEquals(new int[]{1, 3}, solver.findUsingBinarySearch(new int[]{-1000, 0, 1000}, 0));
+    }
 }
