@@ -139,6 +139,12 @@ public class BinarySearchExecutor {
         int[] numbers = new int[]{2, 3, 4, 7, 10};
         int target11 = 5;
 
-        System.out.println("The two numbers are: "+ Arrays.toString((arraySorted.findUsingBinarySearch(numbers, target11))));
+        System.out.println("The two numbers are: " + Arrays.toString((arraySorted.findUsingBinarySearch(numbers, target11))));
+
+        FindPerfectSquare findPerfectSquare = new FindPerfectSquare();
+
+        int target13 = 2147395600;
+
+        System.out.println("The " + target13 + " is a perfect square: " + findPerfectSquare.isPerfectSquare(target13));
     }
 }

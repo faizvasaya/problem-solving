@@ -2338,4 +2338,47 @@ public class BinarySearchTest {
         assertArrayEquals(new int[]{1, 2}, solver.findUsingBinarySearch(new int[]{-1000, 1000}, 0));
         assertArrayEquals(new int[]{1, 3}, solver.findUsingBinarySearch(new int[]{-1000, 0, 1000}, 0));
     }
+
+    @Test
+    public void testSmallPerfectSquares() {
+        FindPerfectSquare solver = new FindPerfectSquare();
+        assertTrue(solver.isPerfectSquare(1)); // Smallest perfect square
+        assertTrue(solver.isPerfectSquare(4)); // 2^2 = 4
+        assertTrue(solver.isPerfectSquare(9)); // 3^2 = 9
+        assertTrue(solver.isPerfectSquare(16)); // 4^2 = 16
+    }
+
+    @Test
+    public void testSmallNonPerfectSquares() {
+        FindPerfectSquare solver = new FindPerfectSquare();
+        assertFalse(solver.isPerfectSquare(2)); // Not a perfect square
+        assertFalse(solver.isPerfectSquare(3)); // Not a perfect square
+        assertFalse(solver.isPerfectSquare(5)); // Not a perfect square
+        assertFalse(solver.isPerfectSquare(6)); // Not a perfect square
+    }
+
+    @Test
+    public void testLargePerfectSquares() {
+        FindPerfectSquare solver = new FindPerfectSquare();
+        assertTrue(solver.isPerfectSquare(2147395600)); // Largest perfect square within constraints
+        assertTrue(solver.isPerfectSquare(100000000)); // 10000^2
+        assertTrue(solver.isPerfectSquare(1048576)); // 1024^2
+    }
+
+    @Test
+    public void testLargeNonPerfectSquares() {
+        FindPerfectSquare solver = new FindPerfectSquare();
+        assertFalse(solver.isPerfectSquare(2147483647)); // Largest number in constraints, not a perfect square
+        assertFalse(solver.isPerfectSquare(2147395601)); // Just above the largest perfect square
+        assertFalse(solver.isPerfectSquare(123456789)); // Random large non-perfect square
+    }
+
+    @Test
+    public void testEdgeCasesSq() {
+        FindPerfectSquare solver = new FindPerfectSquare();
+        assertTrue(solver.isPerfectSquare(1)); // Edge case: smallest num
+        assertFalse(solver.isPerfectSquare(2)); // Just above 1
+        assertTrue(solver.isPerfectSquare(2147395600)); // Largest perfect square
+        assertFalse(solver.isPerfectSquare(2147483647)); // Largest possible num
+    }
 }
