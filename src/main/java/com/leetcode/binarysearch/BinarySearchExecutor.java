@@ -146,5 +146,11 @@ public class BinarySearchExecutor {
         int target13 = 2147395600;
 
         System.out.println("The " + target13 + " is a perfect square: " + findPerfectSquare.isPerfectSquare(target13));
+
+        ArrangingCoins arrangingCoins = new ArrangingCoins();
+
+        int target14 = 2_147_483_647;
+
+        System.out.println("The " + target14 + " requires: " + arrangingCoins.findUsingBinarySearch(target14) + " rows ");
     }
 }

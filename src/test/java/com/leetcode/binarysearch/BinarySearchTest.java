@@ -2381,4 +2381,173 @@ public class BinarySearchTest {
         assertTrue(solver.isPerfectSquare(2147395600)); // Largest perfect square
         assertFalse(solver.isPerfectSquare(2147483647)); // Largest possible num
     }
+
+    @Test
+    public void testSmallInputs() {
+        ArrangingCoins solver = new ArrangingCoins();
+
+        // Test smallest possible input
+        assertEquals(1, solver.findUsingBinarySearch(1)); // 1 coin -> 1 row
+
+        // Small numbers forming complete rows
+        assertEquals(2, solver.findUsingBinarySearch(5)); // 1 + 2 + (2 coins remaining)
+        assertEquals(3, solver.findUsingBinarySearch(8)); // 1 + 2 + 3 (exact)
+    }
+
+    @Test
+    public void testLargeInputs() {
+        ArrangingCoins solver = new ArrangingCoins();
+
+        // Test large inputs near upper constraint
+        assertEquals(65535, solver.findUsingBinarySearch(2147483647)); // Approximation near max int
+        assertEquals(65535, solver.findUsingBinarySearch(2147483640)); // Slightly lower than max
+
+        // Test the largest perfect triangular number below max int
+        assertEquals(65535, solver.findUsingBinarySearch(2147450880)); // (65535 * 65536) / 2
+    }
+
+    @Test
+    public void testExactPerfectTriangleNumbers() {
+        ArrangingCoins solver = new ArrangingCoins();
+
+        // Test exact triangular numbers
+        assertEquals(2, solver.findUsingBinarySearch(3));    // 1 + 2 + 3 = 6
+        assertEquals(4, solver.findUsingBinarySearch(10));   // 1 + 2 + 3 + 4 = 10
+        assertEquals(5, solver.findUsingBinarySearch(15));   // 1 + 2 + 3 + 4 + 5 = 15
+        assertEquals(10, solver.findUsingBinarySearch(55));  // 1 + 2 + ... + 10 = 55
+    }
+
+    @Test
+    public void testIncompleteRows() {
+        ArrangingCoins solver = new ArrangingCoins();
+
+        // Test when rows are incomplete
+        assertEquals(4, solver.findUsingBinarySearch(14));   // 1 + 2 + 3 + 4 + (1 remaining)
+        assertEquals(3, solver.findUsingBinarySearch(9));    // 1 + 2 + 3 + (3 remaining)
+    }
+
+    @Test
+    public void testEdgeCasesAC() {
+        ArrangingCoins solver = new ArrangingCoins();
+
+        // Edge cases around powers of 2
+        assertEquals(65534, solver.findUsingBinarySearch(2147395600)); // Largest perfect square
+        assertEquals(4, solver.findUsingBinarySearch(10));             // Perfect triangular number
+    }
+
+    @Test
+    public void testSmallInputsMS() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(9, solver.findUsingBruteForce(new int[]{2, 3, 4, 7, 11}, 5));
+        assertEquals(6, solver.findUsingBruteForce(new int[]{1, 2, 3, 4}, 2));
+    }
+
+    @Test
+    public void testEdgeCasesMS() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(1, solver.findUsingBruteForce(new int[]{2}, 1)); // First missing
+        assertEquals(1000, solver.findUsingBruteForce(new int[]{}, 1000)); // No elements in array
+    }
+
+    @Test
+    public void testLargeKBS() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(101, solver.findUsingBruteForce(new int[]{1, 2, 3, 4, 5}, 96));
+    }
+
+    @Test
+    public void testSmallInputsMSBS() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(9, solver.findUsingBinarySearch(new int[]{2, 3, 4, 7, 11}, 5));
+        assertEquals(6, solver.findUsingBinarySearch(new int[]{1, 2, 3, 4}, 2));
+    }
+
+    @Test
+    public void testEdgeCasesMSBS() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(1, solver.findUsingBinarySearch(new int[]{2}, 1)); // First missing
+        assertEquals(1000, solver.findUsingBinarySearch(new int[]{}, 1000)); // No elements in array
+    }
+
+    @Test
+    public void testLargeK() {
+        FindKthPositiveMissingInteger solver = new FindKthPositiveMissingInteger();
+        assertEquals(101, solver.findUsingBinarySearch(new int[]{1, 2, 3, 4, 5}, 96));
+    }
+
+    @Test
+    public void testTargetFound() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Test cases where the target is found
+        assertEquals(2, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 5));
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{2, 4, 6, 8}, 2));
+        assertEquals(3, solver.findUsingBinarySearch(new int[]{1, 3, 5, 7, 9}, 7));
+    }
+
+    @Test
+    public void testTargetNotFoundINS() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Test cases where the target is not found
+        assertEquals(1, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 2)); // Target fits between 1 and 3
+        assertEquals(4, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 7)); // Target fits after 6
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{3, 5, 7}, 1)); // Target fits before 3
+    }
+
+    @Test
+    public void testSingleElementArrayINS() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Edge case: Single element array
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{5}, 2)); // Target fits before the single element
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{5}, 5)); // Target matches the single element
+        assertEquals(1, solver.findUsingBinarySearch(new int[]{5}, 7)); // Target fits after the single element
+    }
+
+    @Test
+    public void testTargetAtBounds() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Edge cases for target at array bounds
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 1)); // Target matches the first element
+        assertEquals(3, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 6)); // Target matches the last element
+    }
+
+    @Test
+    public void testLargeInput() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Edge case: Large input size
+        int[] nums = new int[10_000];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = i + 1;
+        }
+        assertEquals(0, solver.findUsingBinarySearch(nums, 1)); // Target at start
+        assertEquals(4_999, solver.findUsingBinarySearch(nums, 5000)); // Target in middle
+        assertEquals(10_000, solver.findUsingBinarySearch(nums, 10_001)); // Target beyond end
+    }
+
+    @Test
+    public void testNegativeNumbersINS() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Edge case: Array with negative numbers
+        assertEquals(2, solver.findUsingBinarySearch(new int[]{-10, -5, 0, 5, 10}, 0)); // Target is 0
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{-10, -5, 0, 5, 10}, -15)); // Target fits before -10
+        assertEquals(5, solver.findUsingBinarySearch(new int[]{-10, -5, 0, 5, 10}, 15)); // Target fits after 10
+    }
+
+    @Test
+    public void testConstraints() {
+        SearchInsertPosition solver = new SearchInsertPosition();
+        
+        // Constraint: Minimum array size
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{-10_000}, -20_000));
+        assertEquals(1, solver.findUsingBinarySearch(new int[]{-10_000}, 10_000));
+        
+        // Constraint: Large negative and positive bounds
+        assertEquals(0, solver.findUsingBinarySearch(new int[]{-10_000, 0, 10_000}, -20_000));
+        assertEquals(3, solver.findUsingBinarySearch(new int[]{-10_000, 0, 10_000}, 20_000));
+    }
 }
