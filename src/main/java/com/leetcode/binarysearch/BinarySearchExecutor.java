@@ -162,5 +162,11 @@ public class BinarySearchExecutor {
 
         System.out.println("The intersection is: " + Arrays.toString(intersection));
 
+        CheckIfNAndItsDoubleExists checkIfNAndItsDoubleExists = new CheckIfNAndItsDoubleExists();
+
+        int[] checkDoubleArray = new int[]{-10, -3, -6, -7};
+
+        System.out.println("The array has double: " + checkIfNAndItsDoubleExists.checkUsingBinarySearch(checkDoubleArray));
+
     }
 }

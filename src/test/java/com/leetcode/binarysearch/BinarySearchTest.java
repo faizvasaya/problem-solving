@@ -3080,4 +3080,186 @@ public class BinarySearchTest {
         int[] expected = {1, 2, 4, 4, 5};
         assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMapStreaming(nums1, nums2Stream));
     }
+
+    CheckIfNAndItsDoubleExists checker = new CheckIfNAndItsDoubleExists();
+
+    @Test
+    public void testBasicPositiveCase() {
+        int[] arr = {10, 2, 5, 3};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testBasicNegativeCase() {
+        int[] arr = {3, 1, 7, 11};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testEdgeCaseWithTwoElements() {
+        int[] arr = {1, 2};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testEdgeCaseWithTwoElementsNoDouble() {
+        int[] arr = {1, 3};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testLargeArrayWithSolution() {
+        int[] arr = {100, -200, 50, 100, 25, -400};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testNegativeValuesWithSolution() {
+        int[] arr = {-10, -5, 20, 40};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testNegativeValuesNoSolution() {
+        int[] arr = {-10, -3, -7};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testZerosInArray() {
+        int[] arr = {0, 0};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testZeroAndOtherElements() {
+        int[] arr = {0, 5};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testAllPositiveNumbersNoSolution() {
+        int[] arr = {2, 3, 5, 7, 9};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testAllNegativeNumbersNoSolution() {
+        int[] arr = {-2, -3, -5, -7, -9};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testBoundaryValues() {
+        int[] arr = {-1000, 0, 500, 1000};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testBoundaryValuesWithoutSolution() {
+        int[] arr = {-1000, 999, 998, 1};
+        assertFalse(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testRepeatingValuesWithSolution() {
+        int[] arr = {2, 4, 4, 8};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testRepeatingValuesNoSolution() {
+        int[] arr = {3, 3, 6, 6, 12, 9};
+        assertTrue(checker.checkUsingBinarySearch(arr));
+    }
+
+    @Test
+    public void testBasicPositiveCasefindUsingSet() {
+        int[] arr = {10, 2, 5, 3};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testBasicNegativeCasefindUsingSet() {
+        int[] arr = {3, 1, 7, 11};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testEdgeCaseWithTwoElementsfindUsingSet() {
+        int[] arr = {1, 2};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testEdgeCaseWithTwoElementsNoDoublefindUsingSet() {
+        int[] arr = {1, 3};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testLargeArrayWithSolutionfindUsingSet() {
+        int[] arr = {100, -200, 50, 100, 25, -400};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testNegativeValuesWithSolutionfindUsingSet() {
+        int[] arr = {-10, -5, 20, 40};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testNegativeValuesNoSolutionfindUsingSet() {
+        int[] arr = {-10, -3, -7};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testZerosInArrayfindUsingSet() {
+        int[] arr = {0, 0};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testZeroAndOtherElementsfindUsingSet() {
+        int[] arr = {0, 5};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testAllPositiveNumbersNoSolutionfindUsingSet() {
+        int[] arr = {2, 3, 5, 7, 9};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testAllNegativeNumbersNoSolutionfindUsingSet() {
+        int[] arr = {-2, -3, -5, -7, -9};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testBoundaryValuesfindUsingSet() {
+        int[] arr = {-1000, 0, 500, 1000};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testBoundaryValuesWithoutSolutionfindUsingSet() {
+        int[] arr = {-1000, 999, 998, 1};
+        assertFalse(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testRepeatingValuesWithSolutionfindUsingSet() {
+        int[] arr = {2, 4, 4, 8};
+        assertTrue(checker.findUsingSet(arr));
+    }
+
+    @Test
+    public void testRepeatingValuesNoSolutionfindUsingSet() {
+        int[] arr = {3, 3, 6, 6, 12, 9};
+        assertTrue(checker.findUsingSet(arr));
+    }
 }
