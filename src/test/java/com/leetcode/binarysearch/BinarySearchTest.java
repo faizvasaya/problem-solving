@@ -2994,4 +2994,90 @@ public class BinarySearchTest {
         int[] expected = {};
         assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
     }
+
+    FindIntersectionWithDuplicates findIntersectionWithDuplicates = new FindIntersectionWithDuplicates();
+
+    @Test
+    public void testBasicCasesFI() {
+        // Test case 1: Common elements with duplicates
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        int[] expected = {2, 2};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 2: Common elements, no duplicates
+        nums1 = new int[]{4, 5};
+        nums2 = new int[]{5, 4};
+        expected = new int[]{5, 4}; // Order can vary
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 3: No intersection
+        nums1 = new int[]{1, 3, 5};
+        nums2 = new int[]{2, 4, 6};
+        expected = new int[]{};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+    }
+
+    @Test
+    public void testEdgeCasesFI() {
+        // Test case 4: One array empty
+        int[] nums1 = {};
+        int[] nums2 = {1, 2, 3};
+        int[] expected = {};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 5: Both arrays empty
+        nums1 = new int[]{};
+        nums2 = new int[]{};
+        expected = new int[]{};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 6: Single element arrays with no intersection
+        nums1 = new int[]{1};
+        nums2 = new int[]{2};
+        expected = new int[]{};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 7: Single element arrays with intersection
+        nums1 = new int[]{2};
+        nums2 = new int[]{2};
+        expected = new int[]{2};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+    }
+
+    @Test
+    public void testSpecialCases() {
+        // Test case 8: One array completely contains the other
+        int[] nums1 = {4, 4, 4};
+        int[] nums2 = {4, 4};
+        int[] expected = {4, 4};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+
+        // Test case 9: Large arrays
+        nums1 = new int[1000];
+        nums2 = new int[1000];
+        Arrays.fill(nums1, 1); // All elements in nums1 are 1
+        Arrays.fill(nums2, 1); // All elements in nums2 are 1
+        expected = new int[1000];
+        Arrays.fill(expected, 1);
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMap(nums1, nums2));
+    }
+
+    @Test
+    public void testSpecialCasesSorted() {
+        // Test case 8: One array completely contains the other
+        int[] nums1 = {1, 2, 2, 4, 4, 5, 5, 5};
+        int[] nums2 = {1, 2, 3, 4, 4, 5};
+        int[] expected = {1, 2, 4, 4, 5};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingTwoPointerInSortedArrays(nums1, nums2));
+    }
+
+    @Test
+    public void testSpecialStreaming() {
+        // Test case 8: One array completely contains the other
+        int[] nums1 = {1, 2, 2, 4, 4, 5, 5, 5};
+        Iterable<Integer> nums2Stream = Arrays.asList(1, 2, 3, 4, 4, 5);
+        int[] expected = {1, 2, 4, 4, 5};
+        assertArrayEquals(expected, findIntersectionWithDuplicates.findUsingHashMapStreaming(nums1, nums2Stream));
+    }
 }
