@@ -152,5 +152,15 @@ public class BinarySearchExecutor {
         int target14 = 2_147_483_647;
 
         System.out.println("The " + target14 + " requires: " + arrangingCoins.findUsingBinarySearch(target14) + " rows ");
+
+        FindIntersectionInArrays findIntersectionInArrays = new FindIntersectionInArrays();
+
+        int[] arr1 = new int[]{0, 2, 2, 1};
+        int[] arr2 = new int[]{4, 4, 1};
+
+        int[] intersection = findIntersectionInArrays.findUsingSortingAndBinarySearch(arr1, arr2);
+
+        System.out.println("The intersection is: " + Arrays.toString(intersection));
+
     }
 }

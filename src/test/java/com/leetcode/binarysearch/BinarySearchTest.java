@@ -2722,4 +2722,276 @@ public class BinarySearchTest {
         };
         assertEquals(14, solver.findUsingTwoPointer(grid9));
     }
+
+    private final FindIntersectionInArrays findIntersectionInArrays = new FindIntersectionInArrays();
+
+    @Test
+    public void testSmallArrays() {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        int[] expected = {2};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoIntersection() {
+        int[] nums1 = {1, 3, 5};
+        int[] nums2 = {2, 4, 6};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testAllCommon() {
+        int[] nums1 = {2, 3, 4};
+        int[] nums2 = {3, 2, 4};
+        int[] expected = {2, 3, 4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testLargeValues() {
+        int[] nums1 = {999, 1000};
+        int[] nums2 = {999, 1000, 998};
+        int[] expected = {999, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums2() {
+        int[] nums1 = {1, 2, 3};
+        int[] nums2 = {};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums1() {
+        int[] nums1 = {};
+        int[] nums2 = {1, 2, 3};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testWithDuplicateNumbersInNums1AndNums2() {
+        int[] nums1 = {4, 4, 5, 5};
+        int[] nums2 = {4, 4, 6};
+        int[] expected = {4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testSameArrayTwice() {
+        int[] nums1 = {1, 2, 3, 4, 5};
+        int[] nums2 = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testUpperBoundValues() {
+        int[] nums1 = {0, 1000};
+        int[] nums2 = {0, 500, 1000};
+        int[] expected = {0, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementMatch() {
+        int[] nums1 = {10};
+        int[] nums2 = {10};
+        int[] expected = {10};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementNoMatch() {
+        int[] nums1 = {1};
+        int[] nums2 = {2};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSortingAndBinarySearch(nums1, nums2)));
+    }
+
+    // Utility function to sort the result for comparison as order doesn't matter
+    private int[] sortResult(int[] result) {
+        Arrays.sort(result);
+        return result;
+    }
+
+    @Test
+    public void testSmallArraysSet() {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        int[] expected = {2};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoIntersectionSet() {
+        int[] nums1 = {1, 3, 5};
+        int[] nums2 = {2, 4, 6};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testAllCommonSet() {
+        int[] nums1 = {2, 3, 4};
+        int[] nums2 = {3, 2, 4};
+        int[] expected = {2, 3, 4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testLargeValuesSet() {
+        int[] nums1 = {999, 1000};
+        int[] nums2 = {999, 1000, 998};
+        int[] expected = {999, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums2Set() {
+        int[] nums1 = {1, 2, 3};
+        int[] nums2 = {};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums1Set() {
+        int[] nums1 = {};
+        int[] nums2 = {1, 2, 3};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testWithDuplicateNumbersInNums1AndNums2Set() {
+        int[] nums1 = {4, 4, 5, 5};
+        int[] nums2 = {4, 4, 6};
+        int[] expected = {4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testSameArrayTwiceSet() {
+        int[] nums1 = {1, 2, 3, 4, 5};
+        int[] nums2 = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testUpperBoundValuesSet() {
+        int[] nums1 = {0, 1000};
+        int[] nums2 = {0, 500, 1000};
+        int[] expected = {0, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementMatchSet() {
+        int[] nums1 = {10};
+        int[] nums2 = {10};
+        int[] expected = {10};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementNoMatchSet() {
+        int[] nums1 = {1};
+        int[] nums2 = {2};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingSet(nums1, nums2)));
+    }
+
+    @Test
+    public void testSmallArraysHash() {
+        int[] nums1 = {1, 2, 2, 1};
+        int[] nums2 = {2, 2};
+        int[] expected = {2};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoIntersectionHash() {
+        int[] nums1 = {1, 3, 5};
+        int[] nums2 = {2, 4, 6};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testAllCommonHash() {
+        int[] nums1 = {2, 3, 4};
+        int[] nums2 = {3, 2, 4};
+        int[] expected = {2, 3, 4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testLargeValuesHash() {
+        int[] nums1 = {999, 1000};
+        int[] nums2 = {999, 1000, 998};
+        int[] expected = {999, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums2hash() {
+        int[] nums1 = {1, 2, 3};
+        int[] nums2 = {};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testNoElementsInNums1Hash() {
+        int[] nums1 = {};
+        int[] nums2 = {1, 2, 3};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testWithDuplicateNumbersInNums1AndNums2Hash() {
+        int[] nums1 = {4, 4, 5, 5};
+        int[] nums2 = {4, 4, 6};
+        int[] expected = {4};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testSameArrayTwiceHash() {
+        int[] nums1 = {1, 2, 3, 4, 5};
+        int[] nums2 = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testUpperBoundValuesHash() {
+        int[] nums1 = {0, 1000};
+        int[] nums2 = {0, 500, 1000};
+        int[] expected = {0, 1000};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementMatchHash() {
+        int[] nums1 = {10};
+        int[] nums2 = {10};
+        int[] expected = {10};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
+
+    @Test
+    public void testSingleElementNoMatchHashh() {
+        int[] nums1 = {1};
+        int[] nums2 = {2};
+        int[] expected = {};
+        assertArrayEquals(expected, sortResult(findIntersectionInArrays.findUsingHashing(nums1, nums2)));
+    }
 }
