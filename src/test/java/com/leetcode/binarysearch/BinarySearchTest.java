@@ -2478,7 +2478,7 @@ public class BinarySearchTest {
     @Test
     public void testTargetFound() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Test cases where the target is found
         assertEquals(2, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 5));
         assertEquals(0, solver.findUsingBinarySearch(new int[]{2, 4, 6, 8}, 2));
@@ -2488,7 +2488,7 @@ public class BinarySearchTest {
     @Test
     public void testTargetNotFoundINS() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Test cases where the target is not found
         assertEquals(1, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 2)); // Target fits between 1 and 3
         assertEquals(4, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 7)); // Target fits after 6
@@ -2498,7 +2498,7 @@ public class BinarySearchTest {
     @Test
     public void testSingleElementArrayINS() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Edge case: Single element array
         assertEquals(0, solver.findUsingBinarySearch(new int[]{5}, 2)); // Target fits before the single element
         assertEquals(0, solver.findUsingBinarySearch(new int[]{5}, 5)); // Target matches the single element
@@ -2508,7 +2508,7 @@ public class BinarySearchTest {
     @Test
     public void testTargetAtBounds() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Edge cases for target at array bounds
         assertEquals(0, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 1)); // Target matches the first element
         assertEquals(3, solver.findUsingBinarySearch(new int[]{1, 3, 5, 6}, 6)); // Target matches the last element
@@ -2517,7 +2517,7 @@ public class BinarySearchTest {
     @Test
     public void testLargeInput() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Edge case: Large input size
         int[] nums = new int[10_000];
         for (int i = 0; i < nums.length; i++) {
@@ -2531,7 +2531,7 @@ public class BinarySearchTest {
     @Test
     public void testNegativeNumbersINS() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Edge case: Array with negative numbers
         assertEquals(2, solver.findUsingBinarySearch(new int[]{-10, -5, 0, 5, 10}, 0)); // Target is 0
         assertEquals(0, solver.findUsingBinarySearch(new int[]{-10, -5, 0, 5, 10}, -15)); // Target fits before -10
@@ -2541,13 +2541,185 @@ public class BinarySearchTest {
     @Test
     public void testConstraints() {
         SearchInsertPosition solver = new SearchInsertPosition();
-        
+
         // Constraint: Minimum array size
         assertEquals(0, solver.findUsingBinarySearch(new int[]{-10_000}, -20_000));
         assertEquals(1, solver.findUsingBinarySearch(new int[]{-10_000}, 10_000));
-        
+
         // Constraint: Large negative and positive bounds
         assertEquals(0, solver.findUsingBinarySearch(new int[]{-10_000, 0, 10_000}, -20_000));
         assertEquals(3, solver.findUsingBinarySearch(new int[]{-10_000, 0, 10_000}, 20_000));
+    }
+
+    @Test
+    public void testExampleCases() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid1 = {
+            {4, 3, 2, -1},
+            {3, 2, 1, -1},
+            {1, 1, -1, -2},
+            {-1, -1, -2, -3}
+        };
+        assertEquals(8, solver.findUsingBruteForce(grid1)); // Example 1
+
+        int[][] grid2 = {
+            {3, 2},
+            {1, 0}
+        };
+        assertEquals(0, solver.findUsingBruteForce(grid2)); // Example 2
+    }
+
+    @Test
+    public void testEdgeCases2D() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        // Single row with all positives
+        int[][] grid3 = {{5, 4, 3, 2, 1}};
+        assertEquals(0, solver.findUsingBruteForce(grid3));
+
+        // Single row with all negatives
+        int[][] grid4 = {{-1, -2, -3, -4}};
+        assertEquals(4, solver.findUsingBruteForce(grid4));
+
+        // Single column with a mix of positives and negatives
+        int[][] grid5 = {
+            {5},
+            {3},
+            {0},
+            {-1},
+            {-2}
+        };
+        assertEquals(2, solver.findUsingBruteForce(grid5));
+    }
+
+    @Test
+    public void testSmallMatrix() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid6 = {{-5}};
+        assertEquals(1, solver.findUsingBruteForce(grid6)); // Single element matrix (negative)
+
+        int[][] grid7 = {{5}};
+        assertEquals(0, solver.findUsingBruteForce(grid7)); // Single element matrix (positive)
+    }
+
+    @Test
+    public void testLargeMatrix() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        // Large matrix with a mix of positives and negatives
+        int[][] grid8 = new int[100][100];
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 100; j++) {
+                grid8[i][j] = 50; // Fill the first 50 rows with positives
+            }
+        }
+        for (int i = 50; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                grid8[i][j] = -50; // Fill the last 50 rows with negatives
+            }
+        }
+        assertEquals(50 * 100, solver.findUsingBruteForce(grid8));
+    }
+
+    @Test
+    public void testMixedValuesMatrix() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid9 = {
+            {5, 3, 2, -1, -2},
+            {4, 2, 0, -1, -3},
+            {3, 1, -2, -3, -4},
+            {2, 0, -3, -4, -5},
+            {1, -1, -4, -5, -6}
+        };
+        assertEquals(14, solver.findUsingBruteForce(grid9));
+    }
+
+    @Test
+    public void testExampleCasesTP() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid1 = {
+            {4, 3, 2, -1},
+            {3, 2, 1, -1},
+            {1, 1, -1, -2},
+            {-1, -1, -2, -3}
+        };
+        assertEquals(8, solver.findUsingBruteForce(grid1)); // Example 1
+
+        int[][] grid2 = {
+            {3, 2},
+            {1, 0}
+        };
+        assertEquals(0, solver.findUsingBruteForce(grid2)); // Example 2
+    }
+
+    @Test
+    public void testEdgeCases2DTP() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        // Single row with all positives
+        int[][] grid3 = {{5, 4, 3, 2, 1}};
+        assertEquals(0, solver.findUsingBruteForce(grid3));
+
+        // Single row with all negatives
+        int[][] grid4 = {{-1, -2, -3, -4}};
+        assertEquals(4, solver.findUsingBruteForce(grid4));
+
+        // Single column with a mix of positives and negatives
+        int[][] grid5 = {
+            {5},
+            {3},
+            {0},
+            {-1},
+            {-2}
+        };
+        assertEquals(2, solver.findUsingBruteForce(grid5));
+    }
+
+    @Test
+    public void testSmallMatrixTP() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid6 = {{-5}};
+        assertEquals(1, solver.findUsingBruteForce(grid6)); // Single element matrix (negative)
+
+        int[][] grid7 = {{5}};
+        assertEquals(0, solver.findUsingBruteForce(grid7)); // Single element matrix (positive)
+    }
+
+    @Test
+    public void testLargeMatrixTP() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        // Large matrix with a mix of positives and negatives
+        int[][] grid8 = new int[100][100];
+        for (int i = 0; i < 50; i++) {
+            for (int j = 0; j < 100; j++) {
+                grid8[i][j] = 50; // Fill the first 50 rows with positives
+            }
+        }
+        for (int i = 50; i < 100; i++) {
+            for (int j = 0; j < 100; j++) {
+                grid8[i][j] = -50; // Fill the last 50 rows with negatives
+            }
+        }
+        assertEquals(50 * 100, solver.findUsingBruteForce(grid8));
+    }
+
+    @Test
+    public void testMixedValuesMatrixTP() {
+        CountNegativeNumbersInSorted2DArray solver = new CountNegativeNumbersInSorted2DArray();
+
+        int[][] grid9 = {
+            {5, 3, 2, -1, -2},
+            {4, 2, 0, -1, -3},
+            {3, 1, -2, -3, -4},
+            {2, 0, -3, -4, -5},
+            {1, -1, -4, -5, -6}
+        };
+        assertEquals(14, solver.findUsingTwoPointer(grid9));
     }
 }
