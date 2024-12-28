@@ -168,5 +168,21 @@ public class BinarySearchExecutor {
 
         System.out.println("The array has double: " + checkIfNAndItsDoubleExists.checkUsingBinarySearch(checkDoubleArray));
 
+        SingleElementInASortedArray singleElementInASortedArray = new SingleElementInASortedArray();
+
+        int[] findSingleElement = new int[]{1, 1, 2, 3, 3};
+
+        System.out.println("The single element in the array is: " + singleElementInASortedArray.findUsingBruteForce(findSingleElement));
+
+        System.out.println("The single element in the array findUsingTwoPointer is: " + singleElementInASortedArray.findUsingTwoPointer(findSingleElement));
+
+        System.out.println("The single element in the array findUsingBinarySearch is: " + singleElementInASortedArray.findUsingBinarySearch(findSingleElement));
+
+        FourSum fourSum = new FourSum();
+
+        int[] findFourSum = new int[]{1,0,-1,0,-2,2};
+
+        System.out.println("The 4 Sum is: " + fourSum.findUsingTwoPointer(findFourSum, 0));
+
     }
 }

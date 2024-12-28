@@ -1,6 +1,9 @@
 package com.leetcode.binarysearch;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -3261,5 +3264,257 @@ public class BinarySearchTest {
     public void testRepeatingValuesNoSolutionfindUsingSet() {
         int[] arr = {3, 3, 6, 6, 12, 9};
         assertTrue(checker.findUsingSet(arr));
+    }
+
+    SingleElementInASortedArray solver = new SingleElementInASortedArray();
+
+    @Test
+    public void testSingleElementInMiddle() {
+        int[] nums = {1, 1, 2, 3, 3, 4, 4, 8, 8};
+        assertEquals(2, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementAtStart() {
+        int[] nums = {1, 2, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(1, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementAtEnd() {
+        int[] nums = {1, 1, 2, 2, 3, 3, 4, 4, 5};
+        assertEquals(5, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementInSmallArray() {
+        int[] nums = {1, 2, 2};
+        assertEquals(1, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementInVerySmallArray() {
+        int[] nums = {1};
+        assertEquals(1, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementWithLargerNumbers() {
+        int[] nums = {3, 3, 7, 7, 10, 11, 11};
+        assertEquals(10, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testArrayWithMaxConstraints() {
+        int n = 100_001; // Max odd length for the constraints
+        int[] nums = new int[n];
+        for (int i = 0; i < n - 1; i += 2) {
+            nums[i] = nums[i + 1] = i / 2 + 1;
+        }
+        nums[n - 1] = 1_000_000; // The single element
+        assertEquals(1_000_000, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testAllDuplicatePairsWithSingleElement() {
+        int[] nums = {0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(2, solver.findUsingBruteForce(nums));
+    }
+
+    @Test
+    public void testSingleElementInMiddleTP() {
+        int[] nums = {1, 1, 2, 3, 3, 4, 4, 8, 8};
+        assertEquals(2, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementAtStartTP() {
+        int[] nums = {1, 2, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(1, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementAtEndTP() {
+        int[] nums = {1, 1, 2, 2, 3, 3, 4, 4, 5};
+        assertEquals(5, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementInSmallArrayTP() {
+        int[] nums = {1, 2, 2};
+        assertEquals(1, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementInVerySmallArrayTP() {
+        int[] nums = {1};
+        assertEquals(1, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementWithLargerNumbersTP() {
+        int[] nums = {3, 3, 7, 7, 10, 11, 11};
+        assertEquals(10, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testArrayWithMaxConstraintsTP() {
+        int n = 100_001; // Max odd length for the constraints
+        int[] nums = new int[n];
+        for (int i = 0; i < n - 1; i += 2) {
+            nums[i] = nums[i + 1] = i / 2 + 1;
+        }
+        nums[n - 1] = 1_000_000; // The single element
+        assertEquals(1_000_000, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testAllDuplicatePairsWithSingleElementTP() {
+        int[] nums = {0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(2, solver.findUsingTwoPointer(nums));
+    }
+
+    @Test
+    public void testSingleElementInMiddleBI() {
+        int[] nums = {1, 1, 2, 3, 3, 4, 4, 8, 8};
+        assertEquals(2, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testSingleElementAtStartBI() {
+        int[] nums = {1, 2, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(1, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testSingleElementAtEndBI() {
+        int[] nums = {1, 1, 2, 2, 3, 3, 4, 4, 5};
+        assertEquals(5, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testSingleElementInSmallArrayBI() {
+        int[] nums = {1, 2, 2};
+        assertEquals(1, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testSingleElementInVerySmallArrayBI() {
+        int[] nums = {1};
+        assertEquals(1, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testSingleElementWithLargerNumbersBI() {
+        int[] nums = {3, 3, 7, 7, 10, 11, 11};
+        assertEquals(10, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testArrayWithMaxConstraintsBI() {
+        int n = 100_001; // Max odd length for the constraints
+        int[] nums = new int[n];
+        for (int i = 0; i < n - 1; i += 2) {
+            nums[i] = nums[i + 1] = i / 2 + 1;
+        }
+        nums[n - 1] = 1_000_000; // The single element
+        assertEquals(1_000_000, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testAllDuplicatePairsWithSingleElementBI() {
+        int[] nums = {0, 0, 1, 1, 2, 3, 3, 4, 4, 5, 5};
+        assertEquals(2, solver.findUsingBinarySearch(nums));
+    }
+
+    @Test
+    public void testWithValidQuadruplets() {
+        FourSum solution = new FourSum();
+        
+        // Test case 1: Multiple unique quadruplets
+        int[] nums1 = {1, 0, -1, 0, -2, 2};
+        int target1 = 0;
+        List<List<Integer>> expected1 = Arrays.asList(
+            Arrays.asList(-2, -1, 1, 2),
+            Arrays.asList(-2, 0, 0, 2),
+            Arrays.asList(-1, 0, 0, 1)
+        );
+        assertEquals(new HashSet<>(expected1), new HashSet<>(solution.findUsingTwoPointer(nums1, target1)));
+
+        // Test case 2: Single quadruplet
+        int[] nums2 = {2, 2, 2, 2, 2};
+        int target2 = 8;
+        List<List<Integer>> expected2 = Collections.singletonList(Arrays.asList(2, 2, 2, 2));
+        assertEquals(new HashSet<>(expected2), new HashSet<>(solution.findUsingTwoPointer(nums2, target2)));
+    }
+
+    @Test
+    public void testNoValidQuadruplets() {
+        FourSum solution = new FourSum();
+        
+        // Test case 3: No quadruplet matches the target
+        int[] nums = {1, 2, 3, 4};
+        int target = 50;
+        List<List<Integer>> expected = Collections.emptyList();
+        assertEquals(expected, solution.findUsingTwoPointer(nums, target));
+    }
+
+    @Test
+    public void testWithEmptyArray() {
+        FourSum solution = new FourSum();
+        
+        // Test case 4: Empty array
+        int[] nums = {};
+        int target = 0;
+        List<List<Integer>> expected = Collections.emptyList();
+        assertEquals(expected, solution.findUsingTwoPointer(nums, target));
+    }
+
+    @Test
+    public void testWithSingleElementArray() {
+        FourSum solution = new FourSum();
+        
+        // Test case 5: Array with fewer than four elements
+        int[] nums = {1};
+        int target = 1;
+        List<List<Integer>> expected = Collections.emptyList();
+        assertEquals(expected, solution.findUsingTwoPointer(nums, target));
+    }
+
+    @Test
+    public void testWithNegativeAndPositiveNumbers() {
+        FourSum solution = new FourSum();
+        
+        // Test case 6: Mix of positive and negative numbers
+        int[] nums = {-3, -1, 0, 2, 4, 5};
+        int target = 0;
+        List<List<Integer>> expected = Arrays.asList(
+            Arrays.asList(-3, -1, 0, 4)
+        );
+        assertEquals(new HashSet<>(expected), new HashSet<>(solution.findUsingTwoPointer(nums, target)));
+    }
+
+    @Test
+    public void testWithDuplicates() {
+        FourSum solution = new FourSum();
+        
+        // Test case 7: Array with duplicates
+        int[] nums = {2, 2, 2, 2, 2, 2};
+        int target = 8;
+        List<List<Integer>> expected = Collections.singletonList(Arrays.asList(2, 2, 2, 2));
+        assertEquals(new HashSet<>(expected), new HashSet<>(solution.findUsingTwoPointer(nums, target)));
+    }
+
+    @Test
+    public void testBoundaryConditions() {
+        FourSum solution = new FourSum();
+        
+        // Test case 8: Large range of values
+        int[] nums = {100000, -100000, -99999, 99999};
+        int target = 0;
+        List<List<Integer>> expected = Collections.singletonList(
+            Arrays.asList(-100000, -99999, 99999, 100000)
+        );
+        assertEquals(new HashSet<>(expected), new HashSet<>(solution.findUsingTwoPointer(nums, target)));
     }
 }
