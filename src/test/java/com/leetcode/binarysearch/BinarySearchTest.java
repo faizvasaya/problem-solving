@@ -3517,4 +3517,62 @@ public class BinarySearchTest {
         );
         assertEquals(new HashSet<>(expected), new HashSet<>(solution.findUsingTwoPointer(nums, target)));
     }
+
+    // Unit test cases for FindDuplicateElements
+    FindDuplicateElements findDuplicateElements = new FindDuplicateElements();
+
+    @Test
+    public void testFindUsingBinarySearch() {
+        // Test Case 1: Standard case with one duplicate
+        assertEquals(2, findDuplicateElements.findUsingBinarySearch(new int[]{1, 3, 4, 2, 2}));
+        // Test Case 2: Duplicate is the largest number
+        assertEquals(3, findDuplicateElements.findUsingBinarySearch(new int[]{3, 1, 3, 4, 2}));
+        // Test Case 3: All elements are the same
+        assertEquals(3, findDuplicateElements.findUsingBinarySearch(new int[]{3, 3, 3, 3, 3}));
+        // Test Case 4: Minimum edge case
+        assertEquals(1, findDuplicateElements.findUsingBinarySearch(new int[]{1, 1}));
+        // Test Case 5: Larger array
+        assertEquals(7, findDuplicateElements.findUsingBinarySearch(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10}));
+    }
+
+    @Test
+    public void testFindUsingCycleDetection() {
+        // Test Case 1: Standard case with one duplicate
+        assertEquals(2, findDuplicateElements.findUsingCycleDetection(new int[]{1, 3, 4, 2, 2}));
+        // Test Case 2: Duplicate is the largest number
+        assertEquals(3, findDuplicateElements.findUsingCycleDetection(new int[]{3, 1, 3, 4, 2}));
+        // Test Case 3: All elements are the same
+        assertEquals(3, findDuplicateElements.findUsingCycleDetection(new int[]{3, 3, 3, 3, 3}));
+        // Test Case 4: Minimum edge case
+        assertEquals(1, findDuplicateElements.findUsingCycleDetection(new int[]{1, 1}));
+        // Test Case 5: Larger array
+        assertEquals(7, findDuplicateElements.findUsingCycleDetection(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10}));
+    }
+
+    @Test
+    public void testFindUsingBooleanArray() {
+        // Test Case 1: Standard case with one duplicate
+        assertEquals(2, findDuplicateElements.findUsingBooleanArray(new int[]{1, 3, 4, 2, 2}));
+        // Test Case 2: Duplicate is the largest number
+        assertEquals(3, findDuplicateElements.findUsingBooleanArray(new int[]{3, 1, 3, 4, 2}));
+        // Test Case 3: All elements are the same
+        assertEquals(3, findDuplicateElements.findUsingBooleanArray(new int[]{3, 3, 3, 3, 3}));
+        // Test Case 4: Minimum edge case
+        assertEquals(1, findDuplicateElements.findUsingBooleanArray(new int[]{1, 1}));
+        // Test Case 5: Larger array
+        assertEquals(7, findDuplicateElements.findUsingBooleanArray(new int[]{1, 2, 3, 4, 5, 6, 7, 7, 8, 9, 10}));
+    }
+
+    @Test
+    public void testConstraintsDuplicateElements() {
+        // Large Input: Verify solution works for edge case size constraints
+        int[] largeInput = new int[100001];
+        for (int i = 1; i <= 100000; i++) largeInput[i - 1] = i; // Fill with 1 to 100000
+        largeInput[100000] = 99999; // Duplicate at the end
+
+        // Testing all methods
+        assertEquals(99999, findDuplicateElements.findUsingBinarySearch(largeInput));
+        assertEquals(99999, findDuplicateElements.findUsingCycleDetection(largeInput));
+        assertEquals(99999, findDuplicateElements.findUsingBooleanArray(largeInput));
+    }
 }

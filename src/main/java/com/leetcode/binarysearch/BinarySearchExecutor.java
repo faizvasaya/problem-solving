@@ -180,9 +180,25 @@ public class BinarySearchExecutor {
 
         FourSum fourSum = new FourSum();
 
-        int[] findFourSum = new int[]{1,0,-1,0,-2,2};
+        int[] findFourSum = new int[]{1, 0, -1, 0, -2, 2};
 
         System.out.println("The 4 Sum is: " + fourSum.findUsingTwoPointer(findFourSum, 0));
+
+        CapacityToShipPackages capacityToShipPackages = new CapacityToShipPackages();
+
+        int[] findCapacityToShipPackages = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+        System.out.println("The Capacity To Ship Packages is: " + capacityToShipPackages.findUsingBinarySearch(findCapacityToShipPackages, 5));
+
+        FindDuplicateElements findDuplicateElements = new FindDuplicateElements();
+
+        int[] findDuplicateElementsU = new int[]{3, 3, 3, 3, 3};
+
+        System.out.println("The duplicate element using Binary Search is: " + findDuplicateElements.findUsingBinarySearch(findDuplicateElementsU));
+
+        System.out.println("The duplicate element using cycle detection is: " + findDuplicateElements.findUsingCycleDetection(findDuplicateElementsU));
+
+        System.out.println("The duplicate element using boolean array is: " + findDuplicateElements.findUsingBooleanArray(findDuplicateElementsU));
 
     }
 }
