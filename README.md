@@ -14,3 +14,4 @@
 - mvn exec:java@run-linkedlist - To run Linked List 
 - mvn exec:java@run-search - To run Search Algorithms
 - mvn exec:java@run-binarysearch - To run Search Algorithms
+- mvn exec:java@run-sorting - To run Sorting Problems

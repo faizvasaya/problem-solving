@@ -119,6 +119,17 @@
                 com.leetcode.binarysearch.BinarySearchExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Sorting Problems -->
+          <execution>
+            <id>run-sorting</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.sorting.SortingExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
