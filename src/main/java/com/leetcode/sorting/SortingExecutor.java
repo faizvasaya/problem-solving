@@ -20,5 +20,13 @@ public class SortingExecutor {
         selectionSort.sortAscending(numSselectionSort);
 
         System.out.println(Arrays.toString(numSselectionSort));
+
+        InsertionSort insertionSort = new InsertionSort();
+
+        int[] numSInsertionSort = new int[]{5, 4, 1, 2, 3};
+
+        insertionSort.sortAscending(numSInsertionSort);
+
+        System.out.println(Arrays.toString(numSInsertionSort));
     }
 }

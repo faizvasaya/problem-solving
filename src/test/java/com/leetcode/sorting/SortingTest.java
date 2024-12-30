@@ -108,4 +108,54 @@ public class SortingTest {
         selectionSort.sortAscending(input);
         assertArrayEquals(expected, input);
     }
+
+    InsertionSort insertionSort = new InsertionSort();
+
+    @Test
+    public void testAlreadySortedArrayIS() {
+        int[] input = {1, 2, 3, 4, 5};
+        int[] expected = {1, 2, 3, 4, 5};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testReverseSortedArrayIS() {
+        int[] input = {5, 4, 3, 2, 1};
+        int[] expected = {1, 2, 3, 4, 5};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testUnsortedArrayIS() {
+        int[] input = {3, 1, 4, 5, 2};
+        int[] expected = {1, 2, 3, 4, 5};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testSingleElementArrayIS() {
+        int[] input = {42};
+        int[] expected = {42};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testEmptyArrayIS() {
+        int[] input = {};
+        int[] expected = {};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
+
+    @Test
+    public void testArrayWithDuplicatesIS() {
+        int[] input = {4, 2, 4, 3, 2};
+        int[] expected = {2, 2, 3, 4, 4};
+        insertionSort.sortAscending(input);
+        assertArrayEquals(expected, input);
+    }
 }
