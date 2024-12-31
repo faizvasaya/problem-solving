@@ -28,5 +28,25 @@ public class SortingExecutor {
         insertionSort.sortAscending(numSInsertionSort);
 
         System.out.println(Arrays.toString(numSInsertionSort));
+
+        CyclicSort cyclicSort = new CyclicSort();
+
+        int[] numSCyclicSort = new int[]{5, 4, 1, 2, 3};
+
+        cyclicSort.sortAscending(numSCyclicSort);
+
+        System.out.println(Arrays.toString(numSCyclicSort));
+
+        MissingNumberFromArrayOf0ToN missingNumberFromArrayOf0ToN = new MissingNumberFromArrayOf0ToN();
+
+        int[] numSMissingNumberFromArrayOf0ToN = new int[]{0, 1};
+
+        int result = missingNumberFromArrayOf0ToN.findUsingCyclicSort(numSMissingNumberFromArrayOf0ToN);
+
+        System.out.println(result);
+
+        int result2 = missingNumberFromArrayOf0ToN.findUsingSum(numSMissingNumberFromArrayOf0ToN);
+
+        System.out.println(result2);
     }
 }
