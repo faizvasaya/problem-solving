@@ -1,5 +1,8 @@
 package com.leetcode.sorting;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
@@ -345,4 +348,91 @@ public class SortingTest {
         int expected = 8;
         assertEquals(expected, missingNumber.findUsingSum(input));
     }
+
+    private final FindAllDisappearedNumbers finder = new FindAllDisappearedNumbers();
+
+    @Test
+    public void testSingleDisappearedNumber() {
+        int[] nums = {1, 1};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(2), result);
+    }
+
+    @Test
+    public void testMultipleDisappearedNumbers() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(5, 6), result);
+    }
+
+    @Test
+    public void testAllNumbersPresent() {
+        int[] nums = {1, 2, 3, 4, 5};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testEmptyArrayDP() {
+        int[] nums = {};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testSingleElementArrayMissingNumber() {
+        int[] nums = {1};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testDuplicatesOnly() {
+        int[] nums = {2, 2, 2, 2};
+        List<Integer> result = finder.findUsingCyclicSort(nums);
+        assertEquals(Arrays.asList(1, 3, 4), result);
+    }
+
+    @Test
+    public void testSingleDisappearedNumberNN() {
+        int[] nums = {1, 1};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(2), result);
+    }
+
+    @Test
+    public void testMultipleDisappearedNumbersNN() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(5, 6), result);
+    }
+
+    @Test
+    public void testAllNumbersPresentNN() {
+        int[] nums = {1, 2, 3, 4, 5};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testEmptyArrayDPNN() {
+        int[] nums = {};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testSingleElementArrayMissingNumberNN() {
+        int[] nums = {1};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(), result);
+    }
+
+    @Test
+    public void testDuplicatesOnlyNN() {
+        int[] nums = {2, 2, 2, 2};
+        List<Integer> result = finder.findUsingNumberNegation(nums);
+        assertEquals(Arrays.asList(1, 3, 4), result);
+    }
+
 }

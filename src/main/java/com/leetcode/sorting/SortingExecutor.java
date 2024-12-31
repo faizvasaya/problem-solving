@@ -1,6 +1,7 @@
 package com.leetcode.sorting;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class SortingExecutor {
 
@@ -48,5 +49,19 @@ public class SortingExecutor {
         int result2 = missingNumberFromArrayOf0ToN.findUsingSum(numSMissingNumberFromArrayOf0ToN);
 
         System.out.println(result2);
+
+        FindAllDisappearedNumbers findAllDisappearedNumbers = new FindAllDisappearedNumbers();
+
+        int[] numSFindAllDisappearedNumbers = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
+
+        List<Integer> result3 = findAllDisappearedNumbers.findUsingCyclicSort(numSFindAllDisappearedNumbers);
+
+        System.out.println(result3);
+
+        int[] numSFindAllDisappearedNumbersNumberNegation = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
+
+        List<Integer> result4 = findAllDisappearedNumbers.findUsingNumberNegation(numSFindAllDisappearedNumbersNumberNegation);
+
+        System.out.println(result4);
     }
 }
