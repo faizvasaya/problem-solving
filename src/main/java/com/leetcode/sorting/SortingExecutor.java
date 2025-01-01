@@ -63,5 +63,25 @@ public class SortingExecutor {
         List<Integer> result4 = findAllDisappearedNumbers.findUsingNumberNegation(numSFindAllDisappearedNumbersNumberNegation);
 
         System.out.println(result4);
+
+        FindDuplicateNumber findDuplicateNumber = new FindDuplicateNumber();
+
+        int[] numSFindDuplicateNumber = new int[]{3, 3, 3, 3, 3};
+
+        int result5 = findDuplicateNumber.findUsingCyclicSort(numSFindDuplicateNumber);
+
+        System.out.println(result5);
+
+        FindDuplicateNumbers findDuplicateNumbers = new FindDuplicateNumbers();
+
+        int[] numSFindDuplicateNumbers = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
+
+        List<Integer> result6 = findDuplicateNumbers.findUsingCyclicSort(numSFindDuplicateNumbers);
+
+        System.out.println(result6);
+
+        List<Integer> result7 = findDuplicateNumbers.findUsingNumberNegation(numSFindDuplicateNumbers);
+
+        System.out.println(result7);
     }
 }

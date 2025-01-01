@@ -435,4 +435,238 @@ public class SortingTest {
         assertEquals(Arrays.asList(1, 3, 4), result);
     }
 
+    private final FindDuplicateNumbers findDuplicateNumbers = new FindDuplicateNumbers();
+
+    @Test
+    public void testExample1() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> expected = Arrays.asList(3, 2);
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testExample2() {
+        int[] nums = {1, 1, 2};
+        List<Integer> expected = Arrays.asList(1);
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testExample3() {
+        int[] nums = {1};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testEmptyArrayA() {
+        int[] nums = {};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testNoDuplicates() {
+        int[] nums = {1, 2, 3, 4, 5};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testAllDuplicates() {
+        int[] nums = {1, 1, 2, 2, 3, 3, 4, 4};
+        List<Integer> expected = Arrays.asList(1, 3, 2, 4);
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testAlternatingDuplicates() {
+        int[] nums = {3, 1, 4, 2, 1, 5, 6, 3, 7, 8};
+        List<Integer> expected = Arrays.asList(1, 3);
+        assertEquals(expected, findDuplicateNumbers.findUsingCyclicSort(nums));
+    }
+
+    @Test
+    public void testExample1NN() {
+        int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
+        List<Integer> expected = Arrays.asList(2, 3);
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testExample2NN() {
+        int[] nums = {1, 1, 2};
+        List<Integer> expected = Arrays.asList(1);
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testExample3NN() {
+        int[] nums = {1};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testEmptyArrayANN() {
+        int[] nums = {};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testNoDuplicatesNN() {
+        int[] nums = {1, 2, 3, 4, 5};
+        List<Integer> expected = Arrays.asList();
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testAllDuplicatesNN() {
+        int[] nums = {1, 1, 2, 2, 3, 3, 4, 4};
+        List<Integer> expected = Arrays.asList(1, 2, 3, 4);
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+
+    @Test
+    public void testAlternatingDuplicatesNN() {
+        int[] nums = {3, 1, 4, 2, 1, 5, 6, 3, 7, 8};
+        List<Integer> expected = Arrays.asList(1, 3);
+        assertEquals(expected, findDuplicateNumbers.findUsingNumberNegation(nums));
+    }
+    private final SetMismatch setMismatch = new SetMismatch();
+
+    @Test
+    public void testExample1SM() {
+        int[] nums = {1, 2, 2, 4};
+        int[] expected = {2, 3}; // 2 is duplicated, 3 is missing
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testExample2SM() {
+        int[] nums = {1, 1};
+        int[] expected = {1, 2}; // 1 is duplicated, 2 is missing
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testNoDuplicatesAtStart() {
+        int[] nums = {2, 2};
+        int[] expected = {2, 1}; // 2 is duplicated, 1 is missing
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testLargeInputWithErrors() {
+        int n = 10000; // Maximum length of the array
+        int[] nums = new int[n];
+
+        // Populate nums with [1, 2, 3, ... n] but duplicate one value and remove another
+        for (int i = 0; i < n; i++) {
+            nums[i] = i + 1;
+        }
+        nums[n - 1] = 5000; // Duplicate 5000, remove n
+
+        int[] expected = {5000, 10000};
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testSmallInputWithDuplicate() {
+        int[] nums = {3, 1, 3};
+        int[] expected = {3, 2}; // 3 is duplicated, 2 is missing
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testAlreadySortedArrayWithError() {
+        int[] nums = {1, 2, 3, 4, 4};
+        int[] expected = {4, 5}; // 4 is duplicated, 5 is missing
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    @Test
+    public void testSingleElementArraySM() {
+        // Invalid case: array size is less than 2 (2 <= nums.length)
+        int[] nums = {1};
+        int[] expected = {}; // Should handle such cases with no errors
+        assertArrayEquals(expected, setMismatch.findErrorNums(nums));
+    }
+
+    private final FindFirstMissingPositive findFirstMissingPositive = new FindFirstMissingPositive();
+
+    @Test
+    public void testExample1findFirstMissingPositive() {
+        int[] nums = {1, 2, 0};
+        int expected = 3; // Explanation: The numbers in the range [1,2] are all present.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testExample2findFirstMissingPositive() {
+        int[] nums = {3, 4, -1, 1};
+        int expected = 2; // Explanation: 1 is in the array, but 2 is missing.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testExample3findFirstMissingPositive() {
+        int[] nums = {7, 8, 9, 11, 12};
+        int expected = 1; // Explanation: The smallest positive integer 1 is missing.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testSingleElementMissingPositive() {
+        int[] nums = {2};
+        int expected = 1; // Explanation: The smallest missing positive is 1.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testArrayWithNegativeNumbers() {
+        int[] nums = {-1, -2, -3};
+        int expected = 1; // Explanation: No positive integers present, smallest is 1.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testAllNumbersPresentInRange() {
+        int[] nums = {1, 2, 3, 4, 5};
+        int expected = 6; // Explanation: All numbers in range [1,5] present, next is 6.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testEmptyArrayfindFirstMissingPositive() {
+        int[] nums = {};
+        int expected = 1; // Explanation: No numbers present, smallest is 1.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testLargeInputWithMissingValue() {
+        int n = 100000;
+        int[] nums = new int[n - 1];
+        for (int i = 1; i < n; i++) {
+            nums[i - 1] = i; // Missing number is 100000
+        }
+        int expected = n;
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testArrayWithDuplicatesfindFirstMissingPositive() {
+        int[] nums = {1, 1, 3, 3};
+        int expected = 2; // Explanation: 2 is missing.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
+
+    @Test
+    public void testArrayWithMixedLargeAndNegativeNumbers() {
+        int[] nums = {2147483647, -2147483648, 0, 1, 2};
+        int expected = 3; // Explanation: Smallest missing positive is 3.
+        assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
+    }
 }
