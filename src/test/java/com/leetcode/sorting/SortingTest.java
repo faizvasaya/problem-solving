@@ -669,4 +669,192 @@ public class SortingTest {
         int expected = 3; // Explanation: Smallest missing positive is 3.
         assertEquals(expected, findFirstMissingPositive.firstMissingPositive(nums));
     }
+
+    private final MergeSortedArray merger = new MergeSortedArray();
+
+    @Test
+    public void testExample1MS() {
+        int[] nums1 = {1, 2, 3, 0, 0, 0};
+        int[] nums2 = {2, 5, 6};
+        int m = 3, n = 3;
+        int[] expected = {1, 2, 2, 3, 5, 6};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testExample2MS() {
+        int[] nums1 = {1};
+        int[] nums2 = {};
+        int m = 1, n = 0;
+        int[] expected = {1};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testExample3MS() {
+        int[] nums1 = {0};
+        int[] nums2 = {1};
+        int m = 0, n = 1;
+        int[] expected = {1};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testWithNegativeNumbers() {
+        int[] nums1 = {-3, -2, -1, 0, 0, 0};
+        int[] nums2 = {-5, -4, -2};
+        int m = 3, n = 3;
+        int[] expected = {-5, -4, -3, -2, -2, -1};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testWithIdenticalElements() {
+        int[] nums1 = {1, 1, 1, 0, 0, 0};
+        int[] nums2 = {1, 1, 1};
+        int m = 3, n = 3;
+        int[] expected = {1, 1, 1, 1, 1, 1};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testEmptyNums2() {
+        int[] nums1 = {2, 5, 6};
+        int[] nums2 = {};
+        int m = 3, n = 0;
+        int[] expected = {2, 5, 6};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testEmptyNums1() {
+        int[] nums1 = {0, 0, 0};
+        int[] nums2 = {1, 2, 3};
+        int m = 0, n = 3;
+        int[] expected = {1, 2, 3};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testLargeInput() {
+        int m = 100, n = 100;
+        int[] nums1 = new int[m + n];
+        int[] nums2 = new int[n];
+
+        // Populate nums1 with odd numbers, nums2 with even numbers
+        for (int i = 0; i < m; i++) {
+            nums1[i] = 2 * i + 1;
+        }
+        for (int i = 0; i < n; i++) {
+            nums2[i] = 2 * (i + 1);
+        }
+
+        int[] expected = new int[m + n];
+        for (int i = 0; i < m + n; i++) {
+            expected[i] = i + 1;
+        }
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    @Test
+    public void testOverlapRanges() {
+        int[] nums1 = {1, 2, 4, 0, 0, 0};
+        int[] nums2 = {2, 3, 5};
+        int m = 3, n = 3;
+        int[] expected = {1, 2, 2, 3, 4, 5};
+
+        merger.merge(nums1, m, nums2, n);
+        assertArrayEquals(expected, nums1);
+    }
+
+    private final MajorityElement solver = new MajorityElement();
+
+    @Test
+    public void testExample1MajorityElement() {
+        int[] nums = {3, 2, 3};
+        int expected = 3;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testExample2MajorityElement() {
+        int[] nums = {2, 2, 1, 1, 1, 2, 2};
+        int expected = 2;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testSingleElement() {
+        int[] nums = {10};
+        int expected = 10;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testAllElementsSame() {
+        int[] nums = {7, 7, 7, 7};
+        int expected = 7;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testLargeInputWithMajority() {
+        int n = 50000;
+        int[] nums = new int[n];
+
+        // Fill the array: Majority element is 1
+        for (int i = 0; i < n / 2 + 1; i++) {
+            nums[i] = 1;
+        }
+        for (int i = n / 2 + 1; i < n; i++) {
+            nums[i] = 2;
+        }
+
+        int expected = 1;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testNegativeAndPositiveNumbers() {
+        int[] nums = {-1, -1, -1, 2, 2, -1, 3};
+        int expected = -1;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testEdgeCaseMinimumSize() {
+        int[] nums = {1};
+        int expected = 1;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testEdgeCaseTwoElements() {
+        int[] nums = {1, 1};
+        int expected = 1;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    @Test
+    public void testMultipleCandidatesButOneMajority() {
+        int[] nums = {4, 4, 2, 4, 3, 4, 4};
+        int expected = 4;
+        assertEquals(expected, solver.findMajorityElement(nums));
+    }
 }

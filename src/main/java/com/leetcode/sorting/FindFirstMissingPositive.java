@@ -12,6 +12,7 @@ package com.leetcode.sorting;
  */
 public class FindFirstMissingPositive {
 
+    // Time complexity: O(N)
     public int firstMissingPositive(int[] nums) {
         int index = 0;
         while (index < nums.length) {
