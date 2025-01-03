@@ -5,6 +5,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class SortingTest {
@@ -856,5 +859,285 @@ public class SortingTest {
         int[] nums = {4, 4, 2, 4, 3, 4, 4};
         int expected = 4;
         assertEquals(expected, solver.findMajorityElement(nums));
+    }
+
+    private final FindDuplicateElement findDuplicateElement = new FindDuplicateElement();
+
+    @Test
+    public void testExample1containsDuplicate() {
+        int[] nums = {1, 2, 3, 1};
+        assertTrue(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testExample2containsDuplicate() {
+        int[] nums = {1, 2, 3, 4};
+        assertFalse(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testExample3containsDuplicate() {
+        int[] nums = {1, 1, 1, 3, 3, 4, 3, 2, 4, 2};
+        assertTrue(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testSingleElementfindDuplicateElement() {
+        int[] nums = {10};
+        assertFalse(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testTwoDistinctElements() {
+        int[] nums = {1, 2};
+        assertFalse(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testAllSameElements() {
+        int[] nums = {7, 7, 7, 7, 7};
+        assertTrue(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testLargeArrayWithDuplicates() {
+        int n = 100000;
+        int[] nums = new int[n];
+        for (int i = 0; i < n - 2; i++) {
+            nums[i] = i;
+        }
+        nums[n - 3] = 99996; // Duplicate of the second last element
+        assertTrue(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testLargeArrayWithoutDuplicates() {
+        int n = 100000;
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = i;
+        }
+        assertFalse(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testWithNegativeNumbersfindDuplicateElement() {
+        int[] nums = {-10, -20, -30, -10};
+        assertTrue(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    @Test
+    public void testEdgeCaseWithMinimumLength() {
+        int[] nums = {1};
+        assertFalse(findDuplicateElement.containsDuplicate(nums));
+    }
+
+    private final LargestNumber largestNumber = new LargestNumber();
+
+    @Test
+    public void testExampleLargestNumber() {
+        int[] nums = {10, 2};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("210", result);
+    }
+
+    @Test
+    public void testExample2LargestNumber() {
+        int[] nums = {3, 30, 34, 5, 9};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("9534330", result);
+    }
+
+    @Test
+    public void testSingleElementLargestNumber() {
+        int[] nums = {1};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("1", result);
+    }
+
+    @Test
+    public void testAllZeros() {
+        int[] nums = {0, 0, 0};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("0", result);
+    }
+
+    @Test
+    public void testLeadingZeros() {
+        int[] nums = {0, 0, 1};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("100", result);
+    }
+
+    @Test
+    public void testLargeNumbers() {
+        int[] nums = {999999998, 999999997, 999999999};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("999999999999999998999999997", result);
+    }
+
+    @Test
+    public void testMaximumLengthConstraint() {
+        int[] nums = new int[100];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = i + 1; // Populate with ascending numbers
+        }
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testMixedZerosAndLargeValues() {
+        int[] nums = {0, 0, 123, 456};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("45612300", result);
+    }
+
+    @Test
+    public void testDescendingOrder() {
+        int[] nums = {9, 8, 7, 6, 5};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("98765", result);
+    }
+
+    @Test
+    public void testRandomOrder() {
+        int[] nums = {20, 1, 34, 3, 5};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("5343201", result);
+    }
+
+    @Test
+    public void testSimilarPrefix() {
+        int[] nums = {121, 12};
+        String result = largestNumber.findUsingGreedyComparision(nums);
+        assertEquals("12121", result);
+    }
+
+    private final SortColors sortColors = new SortColors();
+
+    // Test case 1: Small array with mixed colors
+    @Test
+    public void testSmallArray() {
+        int[] nums = {2, 0, 2, 1, 1, 0};
+        int[] expected = {0, 0, 1, 1, 2, 2};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{2, 0, 2, 1, 1, 0};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 2: All elements are the same color
+    @Test
+    public void testSameColor() {
+        int[] nums = {0, 0, 0, 0, 0};
+        int[] expected = {0, 0, 0, 0, 0};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{0, 0, 0, 0, 0};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 3: Already sorted array
+    @Test
+    public void testAlreadySortedArraySortColors() {
+        int[] nums = {0, 0, 1, 1, 2, 2};
+        int[] expected = {0, 0, 1, 1, 2, 2};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{0, 0, 1, 1, 2, 2};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 4: Reverse sorted array
+    @Test
+    public void testReverseSortedArraySortColors() {
+        int[] nums = {2, 2, 1, 1, 0, 0};
+        int[] expected = {0, 0, 1, 1, 2, 2};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{2, 2, 1, 1, 0, 0};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 5: Empty array
+    @Test
+    public void testEmptyArraySortColors() {
+        int[] nums = {};
+        int[] expected = {};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 6: Single-element array
+    @Test
+    public void testSingleElementArraySortColors() {
+        int[] nums = {1};
+        int[] expected = {1};
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        nums = new int[]{1};
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Test case 7: Large array with balanced distribution
+    @Test
+    public void testLargeArrayBalanced() {
+        int n = 300; // maximum size
+        int[] nums = new int[n];
+        int[] expected = new int[n];
+
+        for (int i = 0; i < 100; i++) {
+            nums[i] = 0;
+            expected[i] = 0;
+        }
+        for (int i = 100; i < 200; i++) {
+            nums[i] = 1;
+            expected[i] = 1;
+        }
+        for (int i = 200; i < 300; i++) {
+            nums[i] = 2;
+            expected[i] = 2;
+        }
+
+        shuffleArray(nums); // Randomize input
+
+        sortColors.sortColorsUsingBubbleSort(nums);
+        assertArrayEquals(expected, nums);
+
+        shuffleArray(nums); // Randomize again
+        sortColors.sortColorsUsingHashMapAndNumberCounting(nums);
+        assertArrayEquals(expected, nums);
+    }
+
+    // Utility to shuffle array
+    private void shuffleArray(int[] array) {
+        java.util.Random rand = new java.util.Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int j = rand.nextInt(i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
     }
 }

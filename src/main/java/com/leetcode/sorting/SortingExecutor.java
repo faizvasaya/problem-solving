@@ -8,7 +8,7 @@ public class SortingExecutor {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
 
-        int[] nums = new int[]{5, 4, 1, 2, 3};
+        int[] nums = new int[]{2,0,2,1,1,0};
 
         bubbleSort.sortAscending(nums);
 
@@ -83,5 +83,13 @@ public class SortingExecutor {
         List<Integer> result7 = findDuplicateNumbers.findUsingNumberNegation(numSFindDuplicateNumbers);
 
         System.out.println(result7);
+
+        LargestNumber largestNumber = new LargestNumber();
+
+        int[] numSLargestNumber = new int[]{0, 0};
+
+        String result8 = largestNumber.findUsingGreedyComparision(numSLargestNumber);
+
+        System.out.println(result8);
     }
 }
