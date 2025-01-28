@@ -15,3 +15,4 @@
 - mvn exec:java@run-search - To run Search Algorithms
 - mvn exec:java@run-binarysearch - To run Search Algorithms
 - mvn exec:java@run-sorting - To run Sorting Problems
+- mvn exec:java@run-stringoperations - To run String operation problems

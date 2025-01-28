@@ -97,8 +97,8 @@
                 com.leetcode.linkedlist.LinkedListExecutor</mainClass>
             </configuration>
           </execution>
-           <!-- Execution for Linear Search -->
-           <execution>
+          <!-- Execution for Linear Search -->
+          <execution>
             <id>run-search</id>
             <goals>
               <goal>java</goal>
@@ -128,6 +128,17 @@
             <configuration>
               <mainClass>
                 com.leetcode.sorting.SortingExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Sorting Problems -->
+          <execution>
+            <id>run-stringoperations</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.stringoperations.StringOperationsExecutor</mainClass>
             </configuration>
           </execution>
         </executions>
