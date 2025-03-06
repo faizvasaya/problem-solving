@@ -130,7 +130,7 @@
                 com.leetcode.sorting.SortingExecutor</mainClass>
             </configuration>
           </execution>
-          <!-- Execution for Sorting Problems -->
+          <!-- Execution for String Problems -->
           <execution>
             <id>run-stringoperations</id>
             <goals>
@@ -139,6 +139,17 @@
             <configuration>
               <mainClass>
                 com.leetcode.stringoperations.StringOperationsExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Recursion Problems -->
+          <execution>
+            <id>run-recursion</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>
+                com.leetcode.recursion.RecursionExecutor</mainClass>
             </configuration>
           </execution>
         </executions>
