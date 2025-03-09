@@ -61,4 +61,43 @@ public class MergeSort {
 
         return mergedSortedArray;
     }
+
+    public void sortUsingRecursionInPlace(int[] array, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+
+        int mid = start + (end - start) / 2;
+
+        sortUsingRecursionInPlace(array, start, mid);
+
+        sortUsingRecursionInPlace(array, mid + 1, end);
+
+        mergeInPlace(array, start, mid, end);
+    }
+
+    private void mergeInPlace(int[] array, int start, int mid, int end) {
+        int leftPointer = start;
+        int rightPointer = mid + 1;
+
+        while (leftPointer <= mid && rightPointer <= end) {
+            if (array[leftPointer] <= array[rightPointer]) {
+                leftPointer++;
+            } else {
+                int temp = array[rightPointer];
+                int index = rightPointer;
+
+                while (index > leftPointer) {
+                    array[index] = array[index - 1];
+                    index--;
+                }
+                
+                array[leftPointer] = temp;
+
+                leftPointer++;
+                mid++;
+                rightPointer++;
+            }
+        }
+    }
 }

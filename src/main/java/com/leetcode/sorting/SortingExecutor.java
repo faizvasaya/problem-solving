@@ -8,7 +8,7 @@ public class SortingExecutor {
     public static void main(String[] args) {
         BubbleSort bubbleSort = new BubbleSort();
 
-        int[] nums = new int[]{2,0,2,1,1,0};
+        int[] nums = new int[]{2, 0, 2, 1, 1, 0};
 
         bubbleSort.sortAscending(nums);
 
@@ -91,5 +91,28 @@ public class SortingExecutor {
         String result8 = largestNumber.findUsingGreedyComparision(numSLargestNumber);
 
         System.out.println(result8);
+
+        MergeSortedArray mergeSortedArray = new MergeSortedArray();
+
+        int[] nums1 = new int[]{1, 2, 3, 0, 0, 0};
+        int[] nums2 = new int[]{2, 5, 6};
+        int m = 3;
+        int n = 3;
+
+        mergeSortedArray.merge(nums1, m, nums2, n);
+
+        System.out.println(Arrays.toString(nums1));
+
+        int[] nums1a = new int[]{1, 2, 3, 0, 0, 0};
+
+        mergeSortedArray.mergeUsingFrontPointers(nums1a, m, nums2, n);
+
+        System.out.println(Arrays.toString(nums1a));
+
+        int[] nums1b = new int[]{1, 2, 3, 0, 0, 0};
+
+        mergeSortedArray.mergeUsingBackPointers(nums1b, m, nums2, n);
+
+        System.out.println(Arrays.toString(nums1b));
     }
 }

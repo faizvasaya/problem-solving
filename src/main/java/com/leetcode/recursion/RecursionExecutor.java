@@ -115,5 +115,40 @@ public class RecursionExecutor {
         int[] arr3 = {5, 3, 8, 4, 2, 7, 6, 1};
         System.out.println("MergeSort");
         System.err.println(Arrays.toString(mergeSort.sortUsingRecursion(arr3)));
+
+        int[] arr4 = {5, 3, 8, 4, 2, 7, 6, 1};
+        System.out.println("MergeSort In Place");
+        mergeSort.sortUsingRecursionInPlace(arr4, 0, arr4.length - 1);
+
+        // Print sorted array
+        for (int num : arr4) {
+            System.out.print(num + " ");
+        }
+
+        QuickSort quickSort = new QuickSort();
+        int[] arr5 = {5, 4, 3, 2, 1};
+        System.out.println("QuickSort");
+        quickSort.sort(arr5, 0, arr5.length - 1);
+
+        // Print sorted array
+        for (int num : arr5) {
+            System.out.print(num + " ");
+        }
+
+        KthLargestElement kthLargestElement = new KthLargestElement();
+        int[] arr6 = {5, 4, 3, 2, 1, 6};
+        System.out.println("KthLargestElement");
+        System.out.println(kthLargestElement.findKthLargest(arr6, 2));
+
+        KWeakestRows kWeakestRows = new KWeakestRows();
+        int[][] mat = {
+            {1, 1, 0, 0, 0},
+            {1, 1, 1, 1, 0},
+            {1, 0, 0, 0, 0},
+            {1, 1, 0, 0, 0},
+            {1, 1, 1, 1, 1}
+        };
+        System.out.println("KWeakestRows");
+        System.out.println(Arrays.toString(kWeakestRows.kWeakestRows(mat, 3)));
     }
 }
