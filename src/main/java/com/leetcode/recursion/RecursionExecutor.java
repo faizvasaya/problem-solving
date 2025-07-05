@@ -150,5 +150,19 @@ public class RecursionExecutor {
         };
         System.out.println("KWeakestRows");
         System.out.println(Arrays.toString(kWeakestRows.kWeakestRows(mat, 3)));
+
+        SkipACharacter skipACharacter = new SkipACharacter();
+        System.out.println("SkipACharacter");
+        System.out.println(skipACharacter.skip("ABACCA", 'A'));
+
+        System.out.println(skipACharacter.skipUsingRecursion("ABACCA", 'A', new StringBuilder(), 0));
+
+        System.out.println(skipACharacter.skipUsingTailRecursion("AZABCGAB", 'A', 0));
+
+        SubsetsOfAString subsetsOfAString = new SubsetsOfAString();
+        System.out.println("SubsetsOfAString");
+        System.out.println(subsetsOfAString.findIteratively("abc"));
+
+        subsetsOfAString.findRecursively("", "abc");
     }
 }
