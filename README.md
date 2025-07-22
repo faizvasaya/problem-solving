@@ -8,3 +8,4 @@
 - mvn compile - To compile the Java code
 - mvn test    - To run unit test cases
 - mvn exec:java@run-twosum - To run the main class for Two Sum Problem
+- mvn exec:java@run-pattern - To run the main class for Patterns

@@ -44,6 +44,26 @@
               <mainClass>com.leetcode.twosumproblem.TwoSumExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Patterns -->
+          <execution>
+            <id>run-pattern</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.patterns.PatternsExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Collections -->
+          <execution>
+            <id>run-collections</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.collectionsinjava.CollectionsExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
