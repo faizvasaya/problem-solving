@@ -9,3 +9,4 @@
 - mvn test    - To run unit test cases
 - mvn exec:java@run-twosum - To run the main class for Two Sum Problem
 - mvn exec:java@run-pattern - To run the main class for Patterns
+- mvn exec:java@run-maths - To run the main class for Patterns

@@ -64,6 +64,16 @@
               <mainClass>com.leetcode.collectionsinjava.CollectionsExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Maths -->
+          <execution>
+            <id>run-maths</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.maths.MathsExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
