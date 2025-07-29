@@ -74,6 +74,26 @@
               <mainClass>com.leetcode.maths.MathsExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Recursion -->
+          <execution>
+            <id>run-recursion</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.recursion.RecursionExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Hashing -->
+          <execution>
+            <id>run-hashing</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.hashing.HashingExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
