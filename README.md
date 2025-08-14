@@ -12,3 +12,4 @@
 - mvn exec:java@run-maths - To run the main class for Maths
 - mvn exec:java@run-recursion - To run the main class for Recursion
 - mvn exec:java@run-hashing - To run the main class for Hashing
+- mvn exec:java@run-sorting - To run the main class for Sorting

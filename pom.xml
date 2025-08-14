@@ -94,6 +94,16 @@
               <mainClass>com.leetcode.hashing.HashingExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Sorting -->
+          <execution>
+            <id>run-sorting</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.sorting.SortingExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
