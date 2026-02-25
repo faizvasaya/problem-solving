@@ -104,6 +104,16 @@
               <mainClass>com.leetcode.sorting.SortingExecutor</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Sorting -->
+          <execution>
+            <id>run-arrayproblems</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.arrayproblems.ArrayProblems</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>

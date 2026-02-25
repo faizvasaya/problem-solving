@@ -13,3 +13,4 @@
 - mvn exec:java@run-recursion - To run the main class for Recursion
 - mvn exec:java@run-hashing - To run the main class for Hashing
 - mvn exec:java@run-sorting - To run the main class for Sorting
+- mvn exec:java@run-arrayproblems - To run the array problems
