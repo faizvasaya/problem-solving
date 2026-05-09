@@ -859,5 +859,20 @@ public class ArrayProblems {
         long[] result4 = repeatedMissingNumber.findRepeatingAndMissingNumberUsingMathematicalOperation(range, 6);
 
         System.out.println("Repeated Missing Number is : " + Arrays.toString(result4));
+
+        CountInversions ci = new CountInversions();
+        System.out.println("Inversions: " + ci.countUsingBruteForce(new int[]{5, 3, 2, 4, 1}));
+        int[] arr70 = {5, 3, 2, 4, 1};
+        System.out.println("Inversions Merge Sort: " + ci.countUsingMergeSort(arr70));
+
+        ReversePairs rv = new ReversePairs();
+        System.out.println("Inversions Reverse Pairs: " + rv.countUsingBruteForce(new int[]{2147483647, 2147483647, 2147483647, 2147483647, 2147483647, 2147483647}));
+
+        System.out.println("Inversions Reverse Pairs: " + rv.countUsingMergeSort(new int[]{40, 25, 19, 12, 9, 6, 2}));
+
+        MaxProductSubarray mps = new MaxProductSubarray();
+        System.out.println("MaxProductSubarray: " + mps.maxProductUsingBruteForce(new int[]{2, 3, -2, 4}));
+
+        System.out.println("MaxProductSubarray: " + mps.maxProductUsingSingleIteration(new int[]{-2, 0, -1}));
     }
 }

@@ -14,3 +14,4 @@
 - mvn exec:java@run-hashing - To run the main class for Hashing
 - mvn exec:java@run-sorting - To run the main class for Sorting
 - mvn exec:java@run-arrayproblems - To run the array problems
+- mvn exec:java@run-search - To run the search problems

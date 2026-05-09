@@ -114,6 +114,26 @@
               <mainClass>com.leetcode.arrayproblems.ArrayProblems</mainClass>
             </configuration>
           </execution>
+          <!-- Execution for Sorting -->
+          <execution>
+            <id>run-search</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.search.SearchExecutor</mainClass>
+            </configuration>
+          </execution>
+          <!-- Execution for Sorting -->
+          <execution>
+            <id>run-twopointer</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.leetcode.twopointer.TwoPointerExecutor</mainClass>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>
